@@ -1,6 +1,9 @@
 angular.module('doit.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope, DashOptions) {
+  $scope.timeOptions = DashOptions.times();
+  $scope.durationOptions = DashOptions.duration();
+  $scope.typeOptions = DashOptions.types();
 })
 
 .controller('FriendsCtrl', function($scope, Friends) {
