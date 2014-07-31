@@ -11,12 +11,16 @@ angular.module('doit.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('ProfileCtrl', function($scope) {
 })
 
 .controller('LoginCtrl', function($scope, $state){
   $scope.login = function(){
     $state.go('tab.dash');
   };
-  
-});
+
+})
+
+.controller('ProfileCtrl', function($scope, Friends) {
+  $scope.friends = Friends.friends;
+})
