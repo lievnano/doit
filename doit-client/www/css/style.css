@@ -1,1 +1,25 @@
 /* Empty. Add your own CSS if you like */
+.avatar {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  border-radius: 3px;
+}
+
+.friendsAvatar {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  border-radius: 2px;
+  top: 0;
+  left: 0;
+}
+
+.friendSandbox {
+  height: 60px;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  margin-top: 100px;
+}

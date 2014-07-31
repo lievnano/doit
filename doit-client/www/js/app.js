@@ -68,12 +68,12 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services'])
       }
     })
 
-    .state('tab.account', {
-      url: '/account',
+    .state('tab.profile', {
+      url: '/profile',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
+        'tab-profile': {
+          templateUrl: 'templates/tab-profile.html',
+          controller: 'ProfileCtrl'
         }
       }
     })
