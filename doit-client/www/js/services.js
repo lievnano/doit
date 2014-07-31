@@ -19,3 +19,14 @@ angular.module('doit.services', [])
 
   return friends;
 });
+
+// .factory('UserDescription', function(){
+
+//   var description = [
+//     {
+//       name: 'Favorite Activity',
+//       content: 'Running In Park',
+//       count: 10
+//     },
+//   ]
+// })

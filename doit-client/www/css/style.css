@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+
 .avatar {
   height: 90px;
   width: 90px;
@@ -21,9 +22,21 @@
   width: 100%;
   position: relative;
   display: inline-block;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .interestsButton {
-  color: red;
+  float: right;
+}
+
+.userDescriptionSandbox {
+  height: 60px;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  background-color: red;
+}
+
+.doItButton {
+  margin-left: 105px;
 }
