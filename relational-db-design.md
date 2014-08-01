@@ -38,6 +38,18 @@ activitiesInPRogress
   activityID
   time started
 
+interests
+  id
+  interest
+
+userInterests
+  userid
+  interestsID
+
+activityInterests
+  activityID
+  interestID
+
 //how close one user preferences relate to anotother
 userProximity:
   userID1
