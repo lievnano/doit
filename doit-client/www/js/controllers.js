@@ -1,32 +1,38 @@
 angular.module('doit.controllers', [])
 
-.controller('DashCtrl', function($scope, DashOptions, $rootScope, $state) {
+.controller('DashCtrl', function($scope, DashOptions, ToDoLoader) {
   $scope.timeOptions = DashOptions.timeOptions();
   $scope.durationOptions = DashOptions.durationOptions();
   $scope.typeOptions = DashOptions.typeOptions();
-  $scope.timeSelected = $scope.timeOptions[0];
-  $scope.durationSelected = $scope.durationOptions[0];
-  $scope.typeSelected = $scope.typeOptions[0];
-  $scope.toDo = {};
+  $scope.toDo = ToDoLoader.getToDoSpec();
   //three buttons for time, duration, and type
   //each opens up a modal with options from scope array
   $scope.sendToDo = function(x){
-    console.log('object of things to Do: ', $scope.toDo);
-    $rootScope.toDo = $scope.toDo;
-    $scope.served();
+    ToDoLoader.loadToDoSpec($scope.ToDo);
     //send the object to appropriate factory and switch the page....
+
+  $scope.sendToDo = function(){
+    ToDoLoader.loadToDoSpec($scope.toDo);
+    // ToDoLoader.getToDos();
+      //send the object to appropriate factory and switch the page....
   };
 
   $scope.served = function(){
       $state.go('served-events');
     };
+  };
     //send the object to appropriate factory and switch the page...
 })
+
 
 .controller('EventsCtrl', function($scope, Friends, $state) {
   $scope.profile = function(){
     $state.go('tab.profile');
   };
+})
+
+.controller('FriendsCtrl', function($scope, Friends, ToDoLoader) {
+
 })
 
 .controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
