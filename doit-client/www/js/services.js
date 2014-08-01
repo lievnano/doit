@@ -35,5 +35,6 @@ angular.module('doit.services', [])
     var types = ['adventurous', 'rocking', 'intense', 'chill', 'fun', 'classic'];
     return types;
   };
+  return options;
 });
 

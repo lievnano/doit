@@ -84,6 +84,12 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services'])
       controller: 'LoginCtrl'
     })
 
+    .state('served-events', {
+      url: '/served-events',
+      templateUrl: 'templates/served-events.html',
+      controller: 'ServedCtrl'
+    });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
