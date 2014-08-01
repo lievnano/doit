@@ -1,24 +1,23 @@
 angular.module('doit.controllers', [])
 
-.controller('DashCtrl', function($scope, DashOptions) {
+.controller('DashCtrl', function($scope, DashOptions, ToDoLoader) {
   $scope.timeOptions = DashOptions.timeOptions();
   $scope.durationOptions = DashOptions.durationOptions();
   $scope.typeOptions = DashOptions.typeOptions();
-  $scope.timeSelected = $scope.timeOptions[0];
-  $scope.durationSelected = $scope.durationOptions[0];
-  $scope.typeSelected = $scope.typeOptions[0];
-  $scope.toDo = {};
+  $scope.toDo = ToDoLoader.getToDoSpec();
   //three buttons for time, duration, and type
   //each opens up a modal with options from scope array
-  $scope.sendToDo = function(x){
-    console.log('object of things to Do: ', $scope.toDo);
-    //send the object to appropriate factory and switch the page....
-  }
+  $scope.sendToDo = function(){
+    ToDoLoader.loadToDoSpec($scope.toDo);
+    // ToDoLoader.getToDos();
+      //send the object to appropriate factory and switch the page....
+  };
 
 })
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
+.controller('FriendsCtrl', function($scope, Friends, ToDoLoader) {
+  // $scope.friends = Friends.all();
+
 })
 
 .controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
