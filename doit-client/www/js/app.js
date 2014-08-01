@@ -48,12 +48,12 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services'])
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.events', {
+      url: '/events',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-events': {
+          templateUrl: 'templates/tab-events.html',
+          controller: 'EventsCtrl'
         }
       }
     })
@@ -83,6 +83,12 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services'])
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
     })
+
+    .state('served-events', {
+      url: '/served-events',
+      templateUrl: 'templates/served-events.html',
+      controller: 'ServedCtrl'
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

@@ -7,21 +7,36 @@ angular.module('doit.controllers', [])
   $scope.toDo = ToDoLoader.getToDoSpec();
   //three buttons for time, duration, and type
   //each opens up a modal with options from scope array
+  $scope.sendToDo = function(x){
+    ToDoLoader.loadToDoSpec($scope.ToDo);
+    //send the object to appropriate factory and switch the page....
+
   $scope.sendToDo = function(){
     ToDoLoader.loadToDoSpec($scope.toDo);
     // ToDoLoader.getToDos();
       //send the object to appropriate factory and switch the page....
   };
 
+  $scope.served = function(){
+      $state.go('served-events');
+    };
+  };
+    //send the object to appropriate factory and switch the page...
+})
+
+
+.controller('EventsCtrl', function($scope, Friends, $state) {
+  $scope.profile = function(){
+    $state.go('tab.profile');
+  };
 })
 
 .controller('FriendsCtrl', function($scope, Friends, ToDoLoader) {
-  // $scope.friends = Friends.all();
 
 })
 
 .controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
+  
 })
 
 .controller('LoginCtrl', function($scope, $state){
@@ -31,7 +46,19 @@ angular.module('doit.controllers', [])
 
 })
 
-.controller('ProfileCtrl', function($scope, Friends) {
+.controller('ProfileCtrl', function($scope, Friends, $state) {
   $scope.friends = Friends;
+
+  $scope.events = function(){
+    console.log('hey');
+    $state.go('tab.events');
+  };
   
 })
+
+.controller('ServedCtrl', function($scope, $state){
+  $scope.goToDash = function(){
+    $state.go('tab.dash');
+    
+  };
+});
