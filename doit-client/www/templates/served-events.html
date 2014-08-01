@@ -1,0 +1,38 @@
+<ion-view title="DoEm">
+
+  <ion-nav-buttons side='left'>
+    <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="goToDash()">Back</a>
+  </ion-nav-buttons>
+
+  <ion-content>
+     <div class="list card">
+
+      <div class="item assertive item-icon-left">
+        <h2>Activity Title</h2>
+        <p>Where</p>
+      </div>
+
+      <div class="item item-image" ng-style="{'height': '300px', 'width': '300px'}">
+        <img ng-src='http://www.simplefoto.com/wp-content/uploads/2009/11/jog2.jpg' ng-style="{'max-height': '100%', 'width': 'auto', 'padding-top': '5px'}">
+      </div>
+
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item positive">
+          Do It!
+        </a>
+
+        <a class="tab-item positive">
+          Dislike
+        </a>
+      </div>
+
+     <!--  <div class="card">
+        <p><em>Description</em></p> 
+        <p>This is a run in the park, it could be really fun if you tried it</p>
+      </div> -->
+
+     </div ng-repeat-end>
+
+  </ion-content>
+</ion-view>
