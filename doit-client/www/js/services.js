@@ -18,21 +18,22 @@ angular.module('doit.services', [])
   ];
 
   return friends;
+
 })
 
-//factory to generate user options for dashboard do it selection
 .factory('DashOptions', function(){
   var options = {};
   options.timeOptions = function(){
     var times = ['now', '30 minutes from now', '1 hour from now', 'tonight', 'tomorrow', 'this weekend', 'next weekend'];
     return times;
-  }
+  };
   options.durationOptions = function(){
     var durations = ['5 minutes', '15 minutes', '30 minutes', '1 hour', '1 - 3 hours', 'all day', 'multiple days'];
     return durations;
-  }
+  };
   options.typeOptions = function(){
     var types = ['adventurous', 'rocking', 'intense', 'chill', 'fun', 'classic'];
     return types;
-  }
+  };
 });
+
