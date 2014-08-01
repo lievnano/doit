@@ -1,5 +1,10 @@
 angular.module('doit.services', [])
 
+.factory('LoginCheck', function(){
+  //check login and send user to login page if they are not logged in...
+})
+
+
 .factory('Friends', function(){
   
   var friends = [
