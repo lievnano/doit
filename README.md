@@ -5,7 +5,7 @@
 ## Team 
 
 - Liev Nano 
-_ Albrey Brown
+- Albrey Brown
 
 ## Table of Contents
 
