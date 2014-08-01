@@ -13,6 +13,9 @@ angular.module('doit.services', [])
   loader.getToDoSpec = function(){
     return toDoSpec;
   };
+  loader.getArrayOfToDos = function(){
+    //use to do spec to generate list/array of things for user to do, right now 
+  }
   return loader;
 })
 
@@ -39,8 +42,10 @@ angular.module('doit.services', [])
 
 .factory('DashOptions', function(){
   var options = {};
+  //might want sliders for the time options so you can select between some times...
   options.timeOptions = function(){
-    var times = ['now', '30 minutes from now', '1 hour from now', 'tonight', 'tomorrow', 'this weekend', 'next weekend'];
+    //maybe add in commented out times later... right now focus on 24 hour activities for mvp!
+    var times = ['now', '30 minutes from now', '1 hour from now', 'in a few hours', 'tonight', ]; // 'tomorrow', 'this weekend', 'next weekend'];
     return times;
   };
   options.durationOptions = function(){
