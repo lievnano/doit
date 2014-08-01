@@ -13,7 +13,6 @@ angular.module('doit.controllers', [])
   $scope.sendToDo = function(x){
     console.log('object of things to Do: ', $scope.toDo);
     $rootScope.toDo = $scope.toDo;
-
     $scope.served();
     //send the object to appropriate factory and switch the page....
   };
@@ -21,16 +20,17 @@ angular.module('doit.controllers', [])
   $scope.served = function(){
       $state.go('served-events');
     };
+    //send the object to appropriate factory and switch the page...
 })
 
 .controller('EventsCtrl', function($scope, Friends, $state) {
   $scope.profile = function(){
     $state.go('tab.profile');
   };
-
 })
 
 .controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
+  
 })
 
 .controller('LoginCtrl', function($scope, $state){
