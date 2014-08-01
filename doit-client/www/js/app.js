@@ -48,12 +48,12 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services'])
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.events', {
+      url: '/events',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-events': {
+          templateUrl: 'templates/tab-events.html',
+          controller: 'EventsCtrl'
         }
       }
     })

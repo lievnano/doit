@@ -6,12 +6,11 @@ angular.module('doit.controllers', [])
   $scope.typeOptions = DashOptions.types();
 })
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
+.controller('EventsCtrl', function($scope, Friends) {
+
 })
 
 .controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
 })
 
 .controller('LoginCtrl', function($scope, $state){
@@ -21,7 +20,10 @@ angular.module('doit.controllers', [])
 
 })
 
-.controller('ProfileCtrl', function($scope, Friends) {
+.controller('ProfileCtrl', function($scope, Friends, $state) {
   $scope.friends = Friends;
+  $scope.events = function(){
+    $state.go('tab.events');
+  };
   
-})
+});

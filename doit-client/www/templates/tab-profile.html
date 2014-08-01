@@ -4,22 +4,34 @@
       <div>
         <img ng-src="http://si.wsj.net/public/resources/images/BN-BY925_mag041_OZ_20140318165119.jpg" class="avatar">
       </div>
-      <button class="button button-assertive interestsButton">
-        my-events
+      <button class="button button-positive interestsButton">
+        dash-board
       </button>
       <div class="friendSandbox">
         <span ng-repeat='friend in friends'>
           <img class='friendsAvatar'ng-src="{{friends[0].img}}">
         <span>
       </div>
-      <div class="userDescriptionSandbox">
+      <div class="list">
+
+        <a class="item item-avatar" href="#">
+        <img src="">
+        <h2>Favorite Activity</h2>
+        <p>Eating Pasta</p>
+        </a>
+        <a class="item item-avatar" href="#">
+        <img src="">
+        <h2>Activity Streak</h2>
+        <p>10</p>
+        </a>
+        <a class="item item-avatar" href="#">
+        <img src="">
+        <h2>DoIt Activities</h2>
+        <p>Things we'd think you like</p>
+        </a>
       </div>
-      <div class="userDescriptionSandbox">
-      </div>
-      <div class="userDescriptionSandbox">
-      </div>
-      <button class="button button-assertive doItButton">
-        DO IT
+      <button class="button button-positive doItButton" ng-click="events()">
+        my events
       </button>
     </div>
   </ion-content>

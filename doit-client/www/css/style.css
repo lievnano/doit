@@ -38,5 +38,7 @@
 }
 
 .doItButton {
-  margin-left: 105px;
+  position: relative;
+  margin-left: 95px;
+  bottom: 10px;
 }
