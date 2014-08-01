@@ -6,21 +6,21 @@
     <div class="input-label">
       When to Do?
     </div>
-    <select data-ng-model="toDo.time" ng-init='toDo.time = timeOptions[0]' ng-options='timeOption for timeOption in timeOptions'>
+    <select data-ng-model="toDo.time" ng-init='toDo.time = toDo.time || timeOptions[0]' ng-options='timeOption for timeOption in timeOptions'>
     </select>
   </label>
   <label class="item item-input item-select">
     <div class="input-label">
       How long to Do?
     </div>
-    <select data-ng-model="toDo.duration" ng-init='toDo.duration = durationOptions[0]' ng-options='durationOption for durationOption in durationOptions'>
+    <select data-ng-model="toDo.duration" ng-init='toDo.duration = toDo.duration || durationOptions[0]' ng-options='durationOption for durationOption in durationOptions'>
     </select>
   </label>
   <label class="item item-input item-select">
     <div class="input-label">
       Type to Do?
     </div>
-    <select data-ng-model="toDo.type" ng-init='toDo.type = typeOptions[0]' ng-options='typeOption for typeOption in typeOptions'>
+    <select data-ng-model="toDo.type" ng-init='toDo.type = toDo.type || typeOptions[0]' ng-options='typeOption for typeOption in typeOptions'>
     </select>
   </label>
   <button class="button button-full button-positive" ng-Click='sendToDo(durationtoDo)'>Let's Do It!</button>
