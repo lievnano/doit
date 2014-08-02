@@ -2,20 +2,20 @@
   <ion-content class="has-header padding">
     <div id="container">
       <div>
-        <img ng-src="http://si.wsj.net/public/resources/images/BN-BY925_mag041_OZ_20140318165119.jpg" class="avatar">
+        <img ng-src="http://hrhq.squarespace.com/assets/images/heroes/dougcalhoun.jpg" class="avatar">
       </div>
       <button class="button button-positive interestsButton" ng-click="events()">
         My Events
       </button>
       <div class="friendSandbox">
         <span ng-repeat='friend in friends'>
-          <img class='friendsAvatar'ng-src="{{friends[0].img}}">
+          <img class='friendsAvatar'ng-src="{{friend.img}}">
         <span>
       </div>
       <div class="list">
 
-        <a class="item item-avatar" href="#">
-        <img src="">
+        <a class="item item-avatar" ng-click="favoriteActivity()">
+        <img src="http://d2kr7m1e04yntb.cloudfront.net/wp-content/uploads/2013/10/baby-eating-spaghetti-banner.jpg">
         <h2>Favorite Activity</h2>
         <p>Eating Pasta</p>
         </a>

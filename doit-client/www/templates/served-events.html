@@ -1,19 +1,19 @@
 <ion-view title="DoEm">
 
   <ion-nav-buttons side='left'>
-    <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="goToDash()">Back</a>
+    <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="goToDash()"></a>
   </ion-nav-buttons>
 
   <ion-content>
-     <div class="list card">
+     <div class="list card" ng-style="{'z-index': potentialMatches.length - 1 - $index, 'top': '0px', 'left': '0px', 'position': 'absolute'}" ng-repeat="todos in toDo">
 
       <div class="item assertive item-icon-left">
-        <h2>Activity Title</h2>
-        <p>Where</p>
+        <h2>{{todos.title}}</h2>
+        <p>{{todos.where}}</p>
       </div>
 
       <div class="item item-image" ng-style="{'height': '300px', 'width': '300px'}">
-        <img ng-src='http://www.simplefoto.com/wp-content/uploads/2009/11/jog2.jpg' ng-style="{'max-height': '100%', 'width': 'auto', 'padding-top': '5px'}">
+        <img ng-src={{todos.img}} ng-style="{'max-height': '100%', 'width': 'auto', 'padding-top': '5px'}">
       </div>
 
 
@@ -22,7 +22,7 @@
           Do It!
         </a>
 
-        <a class="tab-item positive">
+        <a class="tab-item positive" ng-click="kill()">
           Dislike
         </a>
       </div>

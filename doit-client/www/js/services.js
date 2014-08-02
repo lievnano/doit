@@ -13,6 +13,14 @@ angular.module('doit.services', [])
   loader.getToDoSpec = function(){
     return toDoSpec;
   };
+
+  loader.events = [
+    {title: 'Surfing', img:'http://www.personalluxuryresortsandhotels.com/i/SITE_120910_12161610_5R1BV/content/CMS_121005_16245907_J2FB7/7F45873D-188B-3B72-2E7EA991C83EDA3E.JPG', where: 'San Francisco', description:'Surfing on the beach of San Francisco!'},
+    {title: 'Kayaking', img: 'http://www.adventurestateparks.com/!images/rotator/asp_adventure_mp_mainimage_01b.jpg', where: 'San Francisco', description: 'Kayaking in the bay!'},
+    {title: 'Extreme Biking', img:'http://cdn.sunroom.co.nz/multidayadventures.co.nz/wp-content/uploads/2010/06/Fabian-Jump.jpg', where: 'San Francisco', description: 'Biking in the hills of Marin'},
+    {title: 'Hiking', img:'http://www.real-adventure.co.uk/uploads/site/144/real_adventure_091__large.jpg', where: 'San Francisco', description: 'Hiking in the hills of Berkeley'}
+  ];
+
   return loader;
 })
 
@@ -53,4 +61,3 @@ angular.module('doit.services', [])
   };
   return options;
 });
-
