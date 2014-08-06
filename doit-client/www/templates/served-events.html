@@ -5,19 +5,23 @@
   </ion-nav-buttons>
 
   <ion-content>
+<!-- 
      <div class="list card" ng-style="{'z-index': potentialMatches.length - 1 - $index, 'top': '0px', 'left': '0px', 'position': 'absolute'}" ng-repeat="todos in toDo">
-
-      <div class="item assertive item-icon-left">
+ -->
+   <!--    <div class="item assertive item-icon-left">
         <h2>{{todos.title}}</h2>
         <p>{{todos.where}}</p>
-      </div>
-
-      <div class="item item-image" ng-style="{'height': '300px', 'width': '300px'}">
-        <img ng-src={{todos.img}} ng-style="{'max-height': '100%', 'width': 'auto', 'padding-top': '5px'}">
-      </div>
-
-
-      <div class="item tabs tabs-secondary tabs-icon-left">
+      </div> -->
+      <swipe-cards>
+      <swipe-card ng-repeat="todos in toDo" ng-style="{'z-index': potentialMatches.length - 1 - $index, 'top': '0px', 'left': '0px', 'position': 'absolute'}">
+        <div class='item item-image swipe-card'>
+          <div class="image">
+          <img ng-src={{todos.img}} ng-style="{'max-height': '100%', 'width': 'auto'}" alt="">
+          <h2 class="todosTitle"><span>{{todos.title}}</span></h2>
+        </div>
+      </swipe-card>
+      </swipe-cards>
+     <!--  <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item positive">
           Do It!
         </a>
@@ -26,8 +30,8 @@
           Dislike
         </a>
       </div>
-
-     <!--  <div class="card">
+ -->
+<!--       <div class="card">
         <p><em>Description</em></p> 
         <p>This is a run in the park, it could be really fun if you tried it</p>
       </div> -->
@@ -35,4 +39,4 @@
      </div ng-repeat-end>
 
   </ion-content>
-</ion-view>
+</ion-view> 

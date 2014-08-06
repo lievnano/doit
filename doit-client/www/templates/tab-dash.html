@@ -1,13 +1,13 @@
-<ion-view title="Dash">
+<ion-view title="DoIt Dash">
   <ion-content class="has-header padding">
 <div class="list">
 
-  <label class="item item-input item-select">
-    <div class="input-label">
-      When to Do?
-    </div>
-    <select data-ng-model="toDo.time" ng-init='toDo.time = toDo.time || timeOptions[0]' ng-options='timeOption for timeOption in timeOptions'>
-    </select>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        When to Do?
+      </div>
+      <select data-ng-model="toDo.time" ng-init='toDo.time = toDo.time || timeOptions[0]' ng-options='timeOption for timeOption in timeOptions'>
+      </select>
   </label>
   <label class="item item-input item-select">
     <div class="input-label">
@@ -23,9 +23,10 @@
     <select data-ng-model="toDo.type" ng-init='toDo.type = toDo.type || typeOptions[0]' ng-options='typeOption for typeOption in typeOptions'>
     </select>
   </label>
-  <button class="button button-full button-positive" ng-Click='sendToDo(durationtoDo)'>Let's Do It!</button>
+
 </div>
-<!--     <ion-list>
+  <button class="button button-full button-assertive" ng-Click='sendToDo(durationtoDo)'>Let's Do It!</button>
+    <!-- <ion-list>
       <ion-item ng-repeat="timeOption in timeOptions" type="item-text-wrap">
         {{timeOption}}
       </ion-item>

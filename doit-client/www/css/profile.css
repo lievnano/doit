@@ -1,0 +1,42 @@
+.avatar {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  border-radius: 3px;
+}
+
+.friendsAvatar {
+  height: 60px;
+  width: 60px;
+  position: relative;
+  border-radius: 2px;
+  top: 0;
+  left: 0;
+  margin-left: 10px;
+}
+
+.friendSandbox {
+  height: 60px;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  margin-top: 70px;
+}
+
+.interestsButton {
+  float: right;
+}
+
+.userDescriptionSandbox {
+  height: 60px;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  background-color: red;
+}
+
+.doItButton {
+  position: relative;
+  margin-left: 95px;
+  bottom: 10px;
+}

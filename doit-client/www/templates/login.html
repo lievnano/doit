@@ -1,10 +1,8 @@
-<ion-view title="Login">
-  <ion-content class="center">
-    <div ng-style="{'text-align': 'center'}">
-      <h2 ng-style="{'font-family': 'impact', 'color': 'white', 'font-size': '45px'}">IceBreaker</h2>
-      <button id='a' nav-clear class="button button-block button-positive" ng-click="login()">
-        Sign-In Using Facebook
+<ion-view title="Login" hide-nav-bar="true">
+  <ion-content class="loginButtonContainer">
+      <h2 class="doItLogo">DoiT</h2>
+      <button nav-clear class="button button button loginFacebook" ng-click="login()">
+        Login With Facebook
       </button>
-    </div>
   </ion-content>
 </ion-view>

@@ -1,14 +1,18 @@
 angular.module('doit.controllers', [])
 
-.controller('DashCtrl', function($scope, DashOptions, ToDoLoader, $state) {
+
+.controller('DashCtrl', function($scope, $state, DashOptions, ToDoLoader) {
+
   $scope.timeOptions = DashOptions.timeOptions();
   $scope.durationOptions = DashOptions.durationOptions();
   $scope.typeOptions = DashOptions.typeOptions();
   $scope.toDo = ToDoLoader.getToDoSpec();
   //three buttons for time, duration, and type
   //each opens up a modal with options from scope array
+
   $scope.sendToDo = function(){
-    ToDoLoader.loadToDoSpec($scope.toDo);
+    // ToDoLoader.loadToDoSpec($scope.toDo);
+    $state.go('served-events');
     // ToDoLoader.getToDos();
       //send the object to appropriate factory and switch the page....
     $scope.served();
@@ -17,6 +21,7 @@ angular.module('doit.controllers', [])
   $scope.served = function(){
       $state.go('served-events');
   };
+
     //send the object to appropriate factory and switch the page...
 })
 
