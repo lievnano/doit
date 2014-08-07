@@ -1,4 +1,4 @@
-angular.module('doit.services', [])
+angular.module('doit.services', ['ionic'])
 
 // .factory('LoginCheck', function(){
 //   //check login and send user to login page if they are not logged in...

@@ -58,7 +58,7 @@ angular.module('doit.controllers', [])
   
 })
 
-.controller('ServedCtrl', function($scope, $state, ToDoLoader){
+.controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal){
   $scope.toDo = ToDoLoader.events;
   $scope.goToDash = function(){
     $state.go('tab.dash');
@@ -69,4 +69,34 @@ angular.module('doit.controllers', [])
     $scope.toDo.splice(index, 1);
   };
 
-});
+  $ionicModal.fromTemplateUrl('../templates/modal.html', {
+  
+    animation: 'slide-in-up',
+    scope: $scope,
+
+  }).then(function(modal){
+    $scope.modal = modal;
+
+  });
+
+  $scope.openModal = function(){
+    $scope.modal.show();
+  };
+})
+
+// .controller('ModalCtrl', function($scope, $ionicLoading) {
+  
+//   $scope.newUser = {};
+  
+//     $scope.createContact = function() {
+//      $ionicLoading.show({
+//                 template: '<i class="icon ion-loading-d" style="font-size: 32px"></i>',
+//                 animation: 'fade-in',
+//                 noBackdrop: false
+//             });
+//     console.log('Create Contact', $scope.newUser);
+//     //$scope.modal.hide();
+//   };
+  
+// });
+

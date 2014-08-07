@@ -5,38 +5,22 @@
   </ion-nav-buttons>
 
   <ion-content>
-<!-- 
-     <div class="list card" ng-style="{'z-index': potentialMatches.length - 1 - $index, 'top': '0px', 'left': '0px', 'position': 'absolute'}" ng-repeat="todos in toDo">
- -->
-   <!--    <div class="item assertive item-icon-left">
-        <h2>{{todos.title}}</h2>
-        <p>{{todos.where}}</p>
-      </div> -->
+
       <swipe-cards>
-      <swipe-card ng-repeat="todos in toDo" ng-style="{'z-index': potentialMatches.length - 1 - $index, 'top': '0px', 'left': '0px', 'position': 'absolute'}">
+      <swipe-card ng-repeat="todos in toDo" ng-style="{'z-index': potentialMatches.length - 1 - $index, 'top': '0px', 'left': '0px', 'position': 'absolute'}" ng-click="openModal()">
         <div class='item item-image swipe-card'>
           <div class="image">
           <img ng-src={{todos.img}} ng-style="{'max-height': '100%', 'width': 'auto'}" alt="">
           <h2 class="todosTitle"><span>{{todos.title}}</span></h2>
-        </div>
+        </div> 
       </swipe-card>
-      </swipe-cards>
-     <!--  <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item positive">
-          Do It!
-        </a>
-
-        <a class="tab-item positive" ng-click="kill()">
-          Dislike
-        </a>
+      <div class='likeOrDislike'>
+        <h2>Wassup</h2>
       </div>
- -->
-<!--       <div class="card">
-        <p><em>Description</em></p> 
-        <p>This is a run in the park, it could be really fun if you tried it</p>
-      </div> -->
-
-     </div ng-repeat-end>
+      </swipe-cards>
+     <!-- </div ng-repeat-end> -->
 
   </ion-content>
 </ion-view> 
+
+// sean.mikula@hackreactor.com
