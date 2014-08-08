@@ -4,34 +4,33 @@
       <div>
         <img ng-src="http://hrhq.squarespace.com/assets/images/heroes/dougcalhoun.jpg" class="avatar">
       </div>
-      <button class="button button-positive interestsButton" ng-click="events()">
-        My Events
-      </button>
+      <div ng-style="{'background-color': 'black', 'height': '100px'}">
+        age
+        location
+      </div>
+
+      <button class="button button-positive interestsButton" ng-click="events()"></button>
+
       <div class="friendSandbox">
-        <span ng-repeat='friend in friends'>
-          <img class='friendsAvatar'ng-src="{{friend.img}}">
-        <span>
+        <h4>Recent Activities<h4>
       </div>
-      <div class="list">
-
-        <a class="item item-avatar" ng-click="favoriteActivity()">
-        <img src="http://d2kr7m1e04yntb.cloudfront.net/wp-content/uploads/2013/10/baby-eating-spaghetti-banner.jpg">
-        <h2>Favorite Activity</h2>
-        <p>Eating Pasta</p>
-        </a>
-
-        <a class="item item-avatar" href="#">
-        <img src="">
-        <h2>Activity Streak</h2>
-        <p>10</p>
-        </a>
-
-        <a class="item item-avatar" href="#">
-        <img src="">
-        <h2>DoIt Activities</h2>
-        <p>Things we'd think you like</p>
-        </a>
-      </div>
+      <ion-scroll direction="y" style="width: 500px; height: 500px">
+        <ul class="list">
+          <li ng-repeat="todos in myEvents">
+            <a class="item item-avatar">
+            <img src="{{todos.img}}">
+            <span>
+              <p>{{todos.title}}</p>
+              <i class="icon ion-star"></i>
+              <i class="icon ion-star"></i>
+              <i class="icon ion-star"></i>
+              <i class="ion-ios7-star-outline"></i>
+              <i class="ion-ios7-star-outline"></i>
+            </span>
+            </a>
+          </li>  
+        </ul>
+      </ion-scroll>
     </div>
   </ion-content>
 </ion-view>

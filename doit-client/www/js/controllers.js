@@ -48,9 +48,9 @@ angular.module('doit.controllers', [])
 
 })
 
-.controller('ProfileCtrl', function($scope, Friends, $state) {
+.controller('ProfileCtrl', function($scope, Friends, $state, ToDoLoader) {
   $scope.friends = Friends;
-
+  $scope.myEvents = ToDoLoader.events;
   $scope.events = function(){
     console.log('hey');
     $state.go('tab.events');
@@ -58,16 +58,19 @@ angular.module('doit.controllers', [])
   
 })
 
-.controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal){
+.controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal, Count){
   $scope.toDo = ToDoLoader.events;
+  var count = Count.count;
+  $scope.info;
   $scope.goToDash = function(){
     $state.go('tab.dash');
     
   };
 
-   $scope.kill = function(index) {
-    $scope.toDo.splice(index, 1);
+  $scope.countPlus = function(){
+    console.log(Count.count);
   };
+
 
   $ionicModal.fromTemplateUrl('../templates/modal.html', {
   
@@ -76,13 +79,16 @@ angular.module('doit.controllers', [])
 
   }).then(function(modal){
     $scope.modal = modal;
+    $scope.currentEvent = $scope.toDo[Count.count];
+    console.log($scope.currentEvent);
 
   });
 
-  $scope.openModal = function(){
+  $scope.openModal = function(index){
+    $scope.event = ToDoLoader.events[index];
     $scope.modal.show();
   };
-})
+});
 
 // .controller('ModalCtrl', function($scope, $ionicLoading) {
   

@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.contrib.ui.cards'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, ToDoLoader, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,8 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.con
       StatusBar.styleDefault();
     }
   });
+
+  // $rootScope.events = ToDoLoader.events;
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

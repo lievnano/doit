@@ -73,6 +73,7 @@
       var card = this.cards.pop();
       if(animate) {
         card.swipe();
+        // console.log(this.cards)
       }
       return card;
     }
@@ -282,7 +283,7 @@
         onDestroy: '&'
       },
       compile: function(element, attr) {
-        return function($scope, $element, $attr, swipeCards) {
+        return function($scope, $element, $attr, swipeCards, $rootScope) {
           var el = $element[0];
 
           // Instantiate our card view
@@ -303,9 +304,9 @@
 
           swipeCards.pushCard(swipeableCard);
 
-        }
+        };
       }
-    }
+    };
   }])
 
   .directive('swipeCards', ['$rootScope', function($rootScope) {

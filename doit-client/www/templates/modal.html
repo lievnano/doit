@@ -8,7 +8,13 @@
             <div class="list">
               <div class="card">
                 <div class="item item-text-wrap">
-                 Description for all events, need to connect html to $scope objects!
+                  <h2>Event: {{event.title}}</h2>
+                </br>
+                  <h2>Time: {{event.description.time}}</h2>
+                </br>
+                  <h2>Location: {{event.description.location}}<h2>
+                </br>
+                  Description: {{event.description.describe}}
                 </div>
               </div>
              <button class="button button-full button-positive" ng-click="createContact()">Do It!</button>
