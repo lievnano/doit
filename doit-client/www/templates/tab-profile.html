@@ -1,15 +1,19 @@
 <ion-view title="Profile">
   <ion-content class="has-header padding">
     <div id="container">
-      <div>
+      <div id="profileSandbox">
         <img ng-src="http://hrhq.squarespace.com/assets/images/heroes/dougcalhoun.jpg" class="avatar">
-      </div>
-      <div ng-style="{'background-color': 'black', 'height': '100px'}">
-        age
-        location
+        <span class="profileDescriptionBox">
+          {{user.name}}
+          </br>
+          Location: {{user.location}}
+          </br>
+          Personality: {{user.personality}}
+          </br>
+        </span>
       </div>
 
-      <button class="button button-positive interestsButton" ng-click="events()"></button>
+ <!--      <button class="button button-positive interestsButton" ng-click="events()"></button> -->
 
       <div class="friendSandbox">
         <h4>Recent Activities<h4>

@@ -50,6 +50,11 @@ angular.module('doit.controllers', [])
 
 .controller('ProfileCtrl', function($scope, Friends, $state, ToDoLoader) {
   $scope.friends = Friends;
+  $scope.user = {
+    name: 'Doug Calhoun',
+    location: 'San Francisco',
+    personality: 'Chill',
+  }
   $scope.myEvents = ToDoLoader.events;
   $scope.events = function(){
     console.log('hey');

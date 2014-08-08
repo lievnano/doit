@@ -1,42 +1,40 @@
+.profileSandbox {
+  height: 90px;
+  width: 100%;
+}
+
 .avatar {
   height: 90px;
   width: 90px;
-  position: absolute;
+  position: relative;
   border-radius: 3px;
 }
 
-.friendsAvatar {
-  height: 60px;
-  width: 60px;
-  position: relative;
-  border-radius: 2px;
-  top: 0;
-  left: 0;
-  margin-left: 10px;
-}
 
 .friendSandbox {
   height: 60px;
   width: 100%;
   position: relative;
   display: inline-block;
-  margin-top: 70px;
 }
 
-.interestsButton {
-  float: right;
-}
-
-.userDescriptionSandbox {
+/*.userDescriptionSandbox {
   height: 60px;
-  width: 100%;
+  width: 60%;
   position: relative;
   display: inline-block;
   background-color: red;
-}
+}*/
 
-.doItButton {
+/*.doItButton {
   position: relative;
   margin-left: 95px;
   bottom: 10px;
+}
+*/
+.profileDescriptionBox {
+  height: 95px;
+  width: 206px;
+  float: right;
+  letter-spacing: 1.5px;
 }
