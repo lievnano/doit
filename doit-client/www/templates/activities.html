@@ -1,0 +1,32 @@
+<ion-view title="Activity">
+  <ion-nav-buttons side='left'>
+    <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="profile()"></a>
+    <div class="list card">
+
+  <div class="item item-avatar">
+    <img src="{{activity.img}}">
+    <h2>{{activity.title}}</h2>
+    <p>Date and Time Done</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="{{activity.img}}">
+    <p>
+      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+      the content is from a card-body consisting of an image and paragraph text. The footer
+      consists of tabs, icons aligned left, within the card-footer.
+    </p>
+    <p>
+      <a href="#" class="subdued">1 Like</a>
+      <a href="#" class="subdued">5 Comments</a>
+    </p>
+  </div>
+
+  <div class="item tabs tabs-secondary tabs-icon-left">
+      <rating ng-model="rate" max="max"></rating>  
+    
+  </div>
+
+</div>
+
+</ion-view>

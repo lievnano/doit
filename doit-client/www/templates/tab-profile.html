@@ -20,7 +20,7 @@
       </div>
       <ion-scroll direction="y" style="width: 500px; height: 500px">
         <ul class="list">
-          <li ng-repeat="todos in myEvents">
+          <li ng-repeat="todos in myEvents" ui-sref="activities({id: $index})">
             <a class="item item-avatar">
             <img src="{{todos.img}}">
             <span>
@@ -30,6 +30,7 @@
               <i class="icon ion-star"></i>
               <i class="ion-ios7-star-outline"></i>
               <i class="ion-ios7-star-outline"></i>
+           <!--    <rating ng-model="rate" max="max"></rating> -->
             </span>
             </a>
           </li>  

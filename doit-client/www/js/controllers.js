@@ -49,15 +49,20 @@ angular.module('doit.controllers', [])
 })
 
 .controller('ProfileCtrl', function($scope, Friends, $state, ToDoLoader) {
+  $scope.rate = 0;
+  $scope.max = 5;
   $scope.friends = Friends;
+
   $scope.user = {
     name: 'Doug Calhoun',
     location: 'San Francisco',
     personality: 'Chill',
-  }
+  };
+
   $scope.myEvents = ToDoLoader.events;
+
   $scope.events = function(){
-    console.log('hey');
+    // console.log('hey');
     $state.go('tab.events');
   };
   
@@ -66,16 +71,10 @@ angular.module('doit.controllers', [])
 .controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal, Count){
   $scope.toDo = ToDoLoader.events;
   var count = Count.count;
-  $scope.info;
+  $scope.event;
   $scope.goToDash = function(){
     $state.go('tab.dash');
-    
   };
-
-  $scope.countPlus = function(){
-    console.log(Count.count);
-  };
-
 
   $ionicModal.fromTemplateUrl('../templates/modal.html', {
   
@@ -84,8 +83,14 @@ angular.module('doit.controllers', [])
 
   }).then(function(modal){
     $scope.modal = modal;
-    $scope.currentEvent = $scope.toDo[Count.count];
     console.log($scope.currentEvent);
+    
+    $scope.createEvent = function(){
+      $scope.toDo.unshift({title: 'fakeEvent', img: ''});
+      console.log($scope.toDo.length);
+      // $state.go('tab.profile');
+    };
+
 
   });
 
@@ -93,21 +98,16 @@ angular.module('doit.controllers', [])
     $scope.event = ToDoLoader.events[index];
     $scope.modal.show();
   };
-});
 
-// .controller('ModalCtrl', function($scope, $ionicLoading) {
-  
-//   $scope.newUser = {};
-  
-//     $scope.createContact = function() {
-//      $ionicLoading.show({
-//                 template: '<i class="icon ion-loading-d" style="font-size: 32px"></i>',
-//                 animation: 'fade-in',
-//                 noBackdrop: false
-//             });
-//     console.log('Create Contact', $scope.newUser);
-//     //$scope.modal.hide();
-//   };
-  
-// });
+})
+
+.controller('ActivitiesCtrl', function($scope, $stateParams, $state, ToDoLoader){
+  $scope.max = 5
+  $stateParams.activityId;
+  console.log($stateParams.id);
+   $scope.profile = function(){
+    $state.go('tab.profile');
+  };
+  $scope.activity = ToDoLoader.events[$stateParams.id];
+});
 
