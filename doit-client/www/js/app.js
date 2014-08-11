@@ -60,16 +60,6 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.con
       }
     })
 
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
-      views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
-        }
-      }
-    })
-
     .state('tab.profile', {
       url: '/profile',
       views: {
