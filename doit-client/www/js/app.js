@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('doit', ['ionic', 'doit.controllers', 'doit.services'])
+angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.contrib.ui.cards', 'ionic.rating'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, ToDoLoader, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,8 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services'])
       StatusBar.styleDefault();
     }
   });
+
+  // $rootScope.events = ToDoLoader.events;
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -88,7 +90,13 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services'])
       url: '/served-events',
       templateUrl: 'templates/served-events.html',
       controller: 'ServedCtrl'
-    });
+    })
+
+    .state('activities', {
+      url: '/:id',
+      templateUrl: 'templates/activities.html',
+      controller: 'ActivitiesCtrl'
+    })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

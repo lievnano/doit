@@ -1,37 +1,41 @@
 <ion-view title="Profile">
   <ion-content class="has-header padding">
     <div id="container">
-      <div>
-        <img ng-src="http://si.wsj.net/public/resources/images/BN-BY925_mag041_OZ_20140318165119.jpg" class="avatar">
+      <div id="profileSandbox">
+        <img ng-src="http://hrhq.squarespace.com/assets/images/heroes/dougcalhoun.jpg" class="avatar">
+        <span class="profileDescriptionBox">
+          {{user.name}}
+          </br>
+          Location: {{user.location}}
+          </br>
+          Personality: {{user.personality}}
+          </br>
+        </span>
       </div>
-      <button class="button button-positive interestsButton" ng-click="events()">
-        My Events
-      </button>
+
+ <!--      <button class="button button-positive interestsButton" ng-click="events()"></button> -->
+
       <div class="friendSandbox">
-        <span ng-repeat='friend in friends'>
-          <img class='friendsAvatar'ng-src="{{friends[0].img}}">
-        <span>
+        <h4>Recent Activities<h4>
       </div>
-      <div class="list">
-
-        <a class="item item-avatar" href="#">
-        <img src="">
-        <h2>Favorite Activity</h2>
-        <p>Eating Pasta</p>
-        </a>
-
-        <a class="item item-avatar" href="#">
-        <img src="">
-        <h2>Activity Streak</h2>
-        <p>10</p>
-        </a>
-
-        <a class="item item-avatar" href="#">
-        <img src="">
-        <h2>DoIt Activities</h2>
-        <p>Things we'd think you like</p>
-        </a>
-      </div>
+      <ion-scroll direction="y" style="width: 500px; height: 500px">
+        <ul class="list">
+          <li ng-repeat="todos in myEvents" ui-sref="activities({id: $index})">
+            <a class="item item-avatar">
+            <img src="{{todos.img}}">
+            <span>
+              <p>{{todos.title}}</p>
+              <i class="icon ion-star"></i>
+              <i class="icon ion-star"></i>
+              <i class="icon ion-star"></i>
+              <i class="ion-ios7-star-outline"></i>
+              <i class="ion-ios7-star-outline"></i>
+           <!--    <rating ng-model="rate" max="max"></rating> -->
+            </span>
+            </a>
+          </li>  
+        </ul>
+      </ion-scroll>
     </div>
   </ion-content>
 </ion-view>

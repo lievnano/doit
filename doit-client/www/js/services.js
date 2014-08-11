@@ -1,4 +1,4 @@
-angular.module('doit.services', [])
+angular.module('doit.services', ['ionic'])
 
 // .factory('LoginCheck', function(){
 //   //check login and send user to login page if they are not logged in...
@@ -13,9 +13,41 @@ angular.module('doit.services', [])
   loader.getToDoSpec = function(){
     return toDoSpec;
   };
-  loader.getArrayOfToDos = function(){
-    //use to do spec to generate list/array of things for user to do, right now 
-  }
+
+  loader.events = [
+    {
+      title: 'Surfing in the Sunset',
+      img:'http://www.personalluxuryresortsandhotels.com/i/SITE_120910_12161610_5R1BV/content/CMS_121005_16245907_J2FB7/7F45873D-188B-3B72-2E7EA991C83EDA3E.JPG',
+      where: 'San Francisco',
+      description:{
+        time: '10am',
+        location: 'Baker Beach',
+        describe: 'Take a trip to Baker Beach and enjoy the sun and waves!'
+      }
+    },
+    {
+      title: 'Kayaking',
+      img: 'http://www.adventurestateparks.com/!images/rotator/asp_adventure_mp_mainimage_01b.jpg',
+      where: 'San Francisco',
+      description: {
+        time: '12pm',
+        location: 'The Bay',
+        describe: 'Kayaking in the bay is easy! Go to Joes Crab Shack, rent a couple of boats and get your Kayak on!',
+      },
+    },
+    {title: 'Extreme Biking', img:'http://cdn.sunroom.co.nz/multidayadventures.co.nz/wp-content/uploads/2010/06/Fabian-Jump.jpg', where: 'San Francisco', description: 'Biking in the hills of Marin'},
+    {title: 'Hiking', img:'http://www.real-adventure.co.uk/uploads/site/144/real_adventure_091__large.jpg', where: 'San Francisco', description: 'Hiking in the hills of Berkeley'},
+    {title: 'Extreme Biking', img:'http://cdn.sunroom.co.nz/multidayadventures.co.nz/wp-content/uploads/2010/06/Fabian-Jump.jpg', where: 'San Francisco', description: 'Biking in the hills of Marin'},
+    {title: 'Hiking', img:'http://www.real-adventure.co.uk/uploads/site/144/real_adventure_091__large.jpg', where: 'San Francisco', description: 'Hiking in the hills of Berkeley'},
+    {title: 'Extreme Biking', img:'http://cdn.sunroom.co.nz/multidayadventures.co.nz/wp-content/uploads/2010/06/Fabian-Jump.jpg', where: 'San Francisco', description: 'Biking in the hills of Marin'},
+    {title: 'Hiking', img:'http://www.real-adventure.co.uk/uploads/site/144/real_adventure_091__large.jpg', where: 'San Francisco', description: 'Hiking in the hills of Berkeley'},
+    {title: 'Extreme Biking', img:'http://cdn.sunroom.co.nz/multidayadventures.co.nz/wp-content/uploads/2010/06/Fabian-Jump.jpg', where: 'San Francisco', description: 'Biking in the hills of Marin'},
+    {title: 'Hiking', img:'http://www.real-adventure.co.uk/uploads/site/144/real_adventure_091__large.jpg', where: 'San Francisco', description: 'Hiking in the hills of Berkeley'},
+    {title: 'Extreme Biking', img:'http://cdn.sunroom.co.nz/multidayadventures.co.nz/wp-content/uploads/2010/06/Fabian-Jump.jpg', where: 'San Francisco', description: 'Biking in the hills of Marin'},
+    {title: 'Hiking', img:'http://www.real-adventure.co.uk/uploads/site/144/real_adventure_091__large.jpg', where: 'San Francisco', description: 'Hiking in the hills of Berkeley'}
+  ];
+
+
   return loader;
 })
 
@@ -57,5 +89,18 @@ angular.module('doit.services', [])
     return types;
   };
   return options;
+})
+
+.factory('Count', function(){
+  
+  var countOptions = {
+    count: 0,
+    add: function(){
+      count++;
+    }
+  };
+
+
+  return countOptions;
 });
 
