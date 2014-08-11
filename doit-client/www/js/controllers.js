@@ -48,7 +48,7 @@ angular.module('doit.controllers', [])
 
 })
 
-.controller('ProfileCtrl', function($scope, Friends, $state, ToDoLoader) {
+.controller('ProfileCtrl', function($scope, Friends, $state, ToDoLoader, RecentEvents) {
   $scope.rate = 0;
   $scope.max = 5;
   $scope.friends = Friends;
@@ -59,7 +59,7 @@ angular.module('doit.controllers', [])
     personality: 'Chill',
   };
 
-  $scope.myEvents = ToDoLoader.events;
+  $scope.myEvents = RecentEvents.events;
 
   $scope.events = function(){
     // console.log('hey');
@@ -68,10 +68,12 @@ angular.module('doit.controllers', [])
   
 })
 
-.controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal, Count){
-  $scope.toDo = ToDoLoader.events;
+.controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal, Count, RecentEvents){
+  $scope.toDo = ToDoLoader.events
+  $scope.recentEvents = RecentEvents.events;
   var count = Count.count;
   $scope.event;
+  
   $scope.goToDash = function(){
     $state.go('tab.dash');
   };
@@ -83,16 +85,18 @@ angular.module('doit.controllers', [])
 
   }).then(function(modal){
     $scope.modal = modal;
-    console.log($scope.currentEvent);
     
     $scope.createEvent = function(){
-      $scope.toDo.unshift({title: 'fakeEvent', img: ''});
-      console.log($scope.toDo.length);
-      // $state.go('tab.profile');
+      $scope.recentEvents.unshift($scope.toDo[3]);
+      console.log($scope.recentEvents.length);
+
+      $scope.modal.hide();
+      $state.go('tab.profile');
     };
 
 
   });
+
 
   $scope.openModal = function(index){
     $scope.event = ToDoLoader.events[index];
@@ -101,13 +105,12 @@ angular.module('doit.controllers', [])
 
 })
 
-.controller('ActivitiesCtrl', function($scope, $stateParams, $state, ToDoLoader){
-  $scope.max = 5
+.controller('ActivitiesCtrl', function($scope, $stateParams, $state, ToDoLoader, RecentEvents){
+  $scope.max = 5;
   $stateParams.activityId;
-  console.log($stateParams.id);
    $scope.profile = function(){
     $state.go('tab.profile');
   };
-  $scope.activity = ToDoLoader.events[$stateParams.id];
+  $scope.activity = RecentEvents.events[$stateParams.id];
 });
 
