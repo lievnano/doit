@@ -1,0 +1,50 @@
+.profileSandbox {
+  height: 90px;
+  width: 100%;
+}
+
+.avatar {
+  height: 90px;
+  width: 90px;
+  position: relative;
+  border-radius: 3px;
+}
+
+
+.friendSandbox {
+  height: 60px;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+/*.userDescriptionSandbox {
+  height: 60px;
+  width: 60%;
+  position: relative;
+  display: inline-block;
+  background-color: red;
+}*/
+
+/*.doItButton {
+  position: relative;
+  margin-left: 95px;
+  bottom: 10px;
+}
+*/
+.profileDescriptionBox {
+  height: 95px;
+  width: 206px;
+  float: right;
+  letter-spacing: 1.5px;
+}
+
+ul.rating li {
+  display: inline;
+  border: 0px;
+  background: none;
+  padding: 5px 10px;
+}
+ul.rating li i {
+  font-size: 30px;
+}
