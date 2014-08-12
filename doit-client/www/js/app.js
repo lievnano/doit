@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.contrib.ui.cards', 'ionic.rating'])
+angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.contrib.ui.cards', 'ionic.rating', 'openfb'])
 
 .run(function($ionicPlatform, ToDoLoader, $rootScope) {
   $ionicPlatform.ready(function() {

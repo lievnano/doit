@@ -41,8 +41,9 @@ angular.module('doit.controllers', [])
   
 })
 
-.controller('LoginCtrl', function($scope, $state){
+.controller('LoginCtrl', function($scope, $state, OpenFB){
   $scope.login = function(){
+    OpenFB.login();
     $state.go('tab.profile');
   };
 
