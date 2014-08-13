@@ -173,19 +173,19 @@ angular.module('doit.services', ['ionic'])
       description:{
         time: '10am',
         location: 'Baker Beach',
-        describe: 'Take a trip to Baker Beach and enjoy the sun and waves!'
+        describe: 'Take a trip to Baker Beach and enjoy the sun and waves!',
       }
     },
-    // {
-    //   title: 'Kayaking',
-    //   img: 'http://www.adventurestateparks.com/!images/rotator/asp_adventure_mp_mainimage_01b.jpg',
-    //   where: 'San Francisco',
-    //   description: {
-    //     time: '12pm',
-    //     location: 'The Bay',
-    //     describe: 'Kayaking in the bay is easy! Go to Joes Crab Shack, rent a couple of boats and get your Kayak on!',
-    //   },
-    // },
+    {
+      title: 'Kayaking',
+      img: 'http://www.adventurestateparks.com/!images/rotator/asp_adventure_mp_mainimage_01b.jpg',
+      where: 'San Francisco',
+      description: {
+        time: '12pm',
+        location: 'The Bay',
+        describe: 'Kayaking in the bay is easy! Go to Joes Crab Shack, rent a couple of boats and get your Kayak on!',
+      },
+    },
     {title: 'Hiking', img:'http://www.real-adventure.co.uk/uploads/site/144/real_adventure_091__large.jpg', where: 'San Francisco',  description: {
         time: '12pm',
         location: 'The Bay',
