@@ -15,7 +15,7 @@ module.exports = exports = function(app, express){
   var curatorRouter = express.Router();
   var isCurator = function(req,res,next){
     next();
-  }
+  };
   app.set('port', process.env.PORT || 3030);
   app.set('base url', process.env.URL || 'http://localhost');
   app.use(morgan('dev'));
