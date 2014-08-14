@@ -43,7 +43,7 @@ angular.module('doit.controllers', [])
 
 .controller('LoginCtrl', function($scope, $state, OpenFB){
   $scope.login = function(){
-    // OpenFB.login();
+    OpenFB.login();
     $state.go('tab.profile');
   };
 
