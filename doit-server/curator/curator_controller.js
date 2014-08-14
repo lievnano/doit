@@ -1,4 +1,4 @@
-var dbOps = require('../dbOperations/adminDB')
+var dbOps = require('../dbOperations/adminDB');
 
 module.exports = exports = {
   isCurator : function(req,res,next){
@@ -13,4 +13,4 @@ module.exports = exports = {
   getPlaces : function(req,res){
     
   }
-}
+};
