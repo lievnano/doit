@@ -1,6 +1,13 @@
 module.exports = exports = {
-  addActivity : function(activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, participantsNeeded, occursOnce, startTime, endTime, timeOfDay, minDuration, maxDuration){
-    var sql = 'Insert into activities (activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, participantsNeeded, startTime, endTime, timeOfDay, minDuration, maxDuration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+
+  addActivity : function(activityName, description, uniquePlace,
+                         placeCategoryID, placeID, imgLink, status,
+                         participantsNeeded, occursOnce, startDateTime, 
+                         endDateTime, openingTime, closingTime, minDuration, maxDuration){
+    var sql = 'Insert into activities (activityName, description, \
+              uniquePlace, placeCategoryID, placeID, imgLink, status, \
+              participantsNeeded, startDateTime, endDateTime, openingTime, closingTime  timeOfDay, minDuration, \
+              maxDuration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     connection.query(sql, arguments, function(err,res){
       return res.insertId;
     });
@@ -17,4 +24,5 @@ module.exports = exports = {
       callback(res);
     });
   },
+
 };

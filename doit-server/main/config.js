@@ -13,11 +13,12 @@ module.exports = exports = function(app, express){
   var addEventRouter = express.Router();
   var profileRouter = express.Router();
   var curatorRouter = express.Router();
-  var authRouter = express.router();
+
+  var authRouter = express.Router();
   var isCurator = function(req,res,next){
     next();
   };
-  app.set('port', process.env.PORT || 3030);
+  app.set('port', process.env.PORT || 80);
   app.set('base url', process.env.URL || 'http://localhost');
   app.use(morgan('dev'));
   app.use(middle.cors);
