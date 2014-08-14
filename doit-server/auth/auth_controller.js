@@ -4,6 +4,6 @@ module.exports = exports = {
 
   authenticate: function(req, res) {
     var urlSuffix = makeUrlSuffix.makeUrlSuffix(req);
-    res.redirect('redirect Url' + urlSuffix);
+    res.redirect('/redirect/token/' + urlSuffix);
   }
 };

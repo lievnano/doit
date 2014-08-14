@@ -1,6 +1,6 @@
 // worker which makes the query string to append to the end of the our callback Url
 
-var jwt = require('jwt-simple');
+// var jwt = require('jwt-simple');
 var querystring = require('querystring');
 // var JWT_SECRET = require('./internal-files').JWT_SECRET;
 // var API_KEY = require('./internal-files').API_KEY;
