@@ -14,7 +14,7 @@ module.exports = exports = function(app, express){
   var profileRouter = express.Router();
   var curatorRouter = express.Router();
 
-  var authRouter = express.router();
+  var authRouter = express.Router();
   var isCurator = function(req,res,next){
     next();
   };

@@ -20,8 +20,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 
 passport.use(new FacebookStrategy({
-  clientID: FACEBOOK_APP_ID,
-  clientSecret: FACEBOOK_APP_SECRET,
+  clientID: 270758579793905,
+  clientSecret: '170714ae00c7fe39b0534e030a24fc5e',
   callbackURL: process.env.CURRENT_SERVER + "/auth/facebook/callback"
   }, function(accessToken, refreshToken, profile, done) {
     // Verify callback
@@ -75,10 +75,9 @@ passport.use(new FacebookStrategy({
   }
 ));
 
+module.exports.passport = passport;
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
-
-module.exports.passport = passport;
