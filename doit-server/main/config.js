@@ -13,6 +13,8 @@ module.exports = exports = function(app, express){
   var addEventRouter = express.Router();
   var profileRouter = express.Router();
   var curatorRouter = express.Router();
+
+  var authRouter = express.Router();
   var isCurator = function(req,res,next){
     next();
   };
@@ -21,8 +23,8 @@ module.exports = exports = function(app, express){
   app.use(morgan('dev'));
   app.use(middle.cors);
   app.use('/curator/', curatorRouter);
+  app.use('/auth', authRouter);
+  require('../auth/auth_routes.js')(authRouter);
   require('../curator/curator_routes.js')(curatorRouter);
-
-
 
 };

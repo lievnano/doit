@@ -11,6 +11,6 @@ module.exports = exports = {
 
   },
   getPlaces : function(req,res){
-
+    
   }
 };

@@ -1,4 +1,5 @@
 module.exports = exports = {
+
   addActivity : function(activityName, description, uniquePlace,
                          placeCategoryID, placeID, imgLink, status,
                          participantsNeeded, occursOnce, startDateTime, 
@@ -23,4 +24,5 @@ module.exports = exports = {
       callback(res);
     });
   },
+
 };
