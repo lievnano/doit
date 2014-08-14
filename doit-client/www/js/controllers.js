@@ -52,8 +52,6 @@ angular.module('doit.controllers', [])
 .controller('ProfileCtrl', function($scope, Friends, $state, ToDoLoader, RecentEvents) {
   $scope.rate = 0;
   $scope.max = 5;
-  $scope.friends = Friends;
-
   $scope.user = {
     name: 'Doug Calhoun',
     location: 'San Francisco',
@@ -70,7 +68,7 @@ angular.module('doit.controllers', [])
 })
 
 .controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal, Count, RecentEvents){
-  $scope.toDo = ToDoLoader.events
+  $scope.toDo = ToDoLoader.events;
   $scope.recentEvents = RecentEvents.events;
   var count = Count.count;
   $scope.event;

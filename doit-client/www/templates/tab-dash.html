@@ -1,26 +1,26 @@
 <ion-view title="DoIt Dash">
-  <ion-content class="has-header padding">
-<div class="list">
+  <ion-content class="has-header padding" ng-style="{'background': '#6baf9d'}">
+<div class="list" ng-style="{'margin-top': '110px'}">
 
-    <label class="item item-input item-select">
-      <div class="input-label">
+    <label class="item item-input item-select" ng-style="{'background': '#ed8864'}">
+      <div class="input-label" ng-style="{'color': 'white'}">
         When to Do?
       </div>
-      <select data-ng-model="toDo.time" ng-init='toDo.time = toDo.time || timeOptions[0]' ng-options='timeOption for timeOption in timeOptions'>
+      <select data-ng-model="toDo.time" ng-init='toDo.time = toDo.time || timeOptions[0]' ng-options='timeOption for timeOption in timeOptions' ng-style="{'background': '#ed8864'}">
       </select>
   </label>
-  <label class="item item-input item-select">
-    <div class="input-label">
+  <label class="item item-input item-select" ng-style="{'background': '#be605b'}">
+    <div class="input-label" ng-style="{'color': 'white'}">
       How long to Do?
     </div>
-    <select data-ng-model="toDo.duration" ng-init='toDo.duration = toDo.duration || durationOptions[0]' ng-options='durationOption for durationOption in durationOptions'>
+    <select data-ng-model="toDo.duration" ng-init='toDo.duration = toDo.duration || durationOptions[0]' ng-options='durationOption for durationOption in durationOptions' ng-style="{'background': '#be605b'}">
     </select>
   </label>
-  <label class="item item-input item-select">
-    <div class="input-label">
+  <label class="item item-input item-select" ng-style="{'background': '#ed8864'}">
+    <div class="input-label" ng-style="{'color': 'white'}">
       Type to Do?
     </div>
-    <select data-ng-model="toDo.type" ng-init='toDo.type = toDo.type || typeOptions[0]' ng-options='typeOption for typeOption in typeOptions'>
+    <select data-ng-model="toDo.type" ng-init='toDo.type = toDo.type || typeOptions[0]' ng-options='typeOption for typeOption in typeOptions' ng-style="{'background': '#ed8864'}">
     </select>
   </label>
 
