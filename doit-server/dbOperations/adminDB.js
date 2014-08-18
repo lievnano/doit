@@ -5,9 +5,10 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     database : 'doit',
-    // password : doit_pass
+    password : doit_pass
 
 });
+// uncomment the following when password is correctly set...
 // connection.connect();
 
 module.exports = exports = {
