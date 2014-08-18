@@ -1,3 +1,15 @@
+var doit_pass = requre('./dbCredentials').password;
+
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    database : 'doit',
+    password : doit_pass
+
+});
+connection.connect();
+
 module.exports = exports = {
 
     addActivity : function(activityName, description, uniquePlace, 
@@ -74,8 +86,12 @@ module.exports = exports = {
                 SELECT activityID, activityTypeID FROM activity_types_join \
                 WHERE activityID = ? and activityTypeID = ?) LIMIT 1;'
     connection.query(sql, [activityID,typeID,activityID,typeID], function(err,res){
-      return res.insertId;
-    });
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }    });
   },
   //need to set up location for laters....
   getUserActivities : function(userID, locationID, whenStart, duration, typeID, dateTimeToDo, timeToDo, callback){
@@ -96,10 +112,10 @@ module.exports = exports = {
               limit 10';
     connection.query(sql, [typeID, duration, duration, dateTimeToDo, dateTimeToDo, timeToDo, timeToDo], function(err,res){
       if (err){
-        throw(err);
+        callback(err);
       }
       else{
-        callback(res);
+        callback(null, res);
       }
     });
   },
@@ -108,7 +124,12 @@ module.exports = exports = {
     var sql = 'Insert into user_activities (status, userID, activityID, startDateTime, duration, placeID) \
               Values (?, ?,?,?,?,?)';
     connection.query(sql, ['inprogress', userID,activityID,startDateTime,duration,placeID], function(err,res){
-      return res.insertId;
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }
     });
   },
 
@@ -121,13 +142,25 @@ module.exports = exports = {
               left join places as p on p.id = ua.placeID \
               where ua.userID = ? and ua.status = ?';
     connection.query(sql, [userID, 'inprogress'], function(err, res){
-      callback(res);
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }
     });
   },
   //could add comments or rating here....
   updateUserCurrentEndtime : function(userActivityID, endTime){
     var sql = 'Update user_activities Set endTime=?, status=? where id=?'
-    connection.query(sql, [endTime, 'completed', userActivityID]);
+    connection.query(sql, [endTime, 'completed', userActivityID], function(err,res){
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }      
+    });
   },
 
   getUserPrevious : function(userID, callback){
