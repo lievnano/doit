@@ -2,10 +2,10 @@ var app = angular.module('openfb', [])
 
 .factory('OpenFB', function ($rootScope, $q, $window, $http) {
 
-    var FB_LOGIN_URL = 'http://do-it-server.cloudapp.net'; // change these routes to whichever domain name is chosen for deployed site
+    var FB_LOGIN_URL = 'http://do-it-server.cloudapp.net/auth/auth/facebook/callback'; // change these routes to whichever domain name is chosen for deployed site
     // By default we store fbtoken in sessionStorage. This can be overriden in init()
     var localStorage = window.localStorage;
-    var oauthRedirectURL = 'http://do-it-server.cloudapp.net';
+    var oauthRedirectURL = 'http://do-it-server.cloudapp.net/auth/auth/facebook/callback';
     // Because the OAuth login spans multiple processes, we need to keep the success/error handlers as variables
     // inside the module instead of keeping them local within the login function.
     var deferredLogin;
