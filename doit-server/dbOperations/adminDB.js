@@ -1,14 +1,14 @@
-var doit_pass = requre('./dbCredentials').password;
+var doit_pass = require('./dbCredentials').password;
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     database : 'doit',
-    password : doit_pass
+    // password : doit_pass
 
 });
-connection.connect();
+// connection.connect();
 
 module.exports = exports = {
 
@@ -29,15 +29,20 @@ module.exports = exports = {
         callback(err)
       }
       else{
-        callback(null, res.insertId);
+        callback(null, res);
       }
     });
   },
-  addPlace : function(locationID, placeName, address, description, imgLink){
+  addPlace : function(locationID, placeName, address, description, imgLink, callback){
     var sql = 'Insert into places (locationID, placeName, address, description, imgLink) \
                VALUES (?, ?, ?, ?, ?)';
-    connection.query(sql, arguments, function(err,res){
-      return res.insertId;
+    connection.query(sql, [locationID, placeName, address, description, imgLink], function(err,res){
+      if(err){  
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }
     });
   },
   getPlaces : function(callback){
@@ -73,13 +78,13 @@ module.exports = exports = {
       }
     });    
   },
-  addActivityTypes : function(type){
+  addActivityTypes : function(type, callback){
     var sql = 'Insert into activity_types (type) Values (?)';
     connection.query(sql, [type], function(err,res){
       return res.insertId;
     });
   },
-  addTypeToActivities : function(activityID, typeID){
+  addTypeToActivities : function(activityID, typeID, callback){
     var sql = 'INSERT INTO activity_types_join (activityID, activityTypeID) \
               SELECT * FROM (SELECT ?, ?) AS tmp \
               WHERE NOT EXISTS ( \
@@ -91,7 +96,8 @@ module.exports = exports = {
       }
       else{
         callback(null, res);
-      }    });
+      }  
+    });
   },
   //need to set up location for laters....
   getUserActivities : function(userID, locationID, whenStart, duration, typeID, dateTimeToDo, timeToDo, callback){
@@ -120,7 +126,7 @@ module.exports = exports = {
     });
   },
 
-  setUserCurrent : function(userID, activityID, startDateTime,duration, placeID){
+  setUserCurrent : function(userID, activityID, startDateTime,duration, placeID,callback){
     var sql = 'Insert into user_activities (status, userID, activityID, startDateTime, duration, placeID) \
               Values (?, ?,?,?,?,?)';
     connection.query(sql, ['inprogress', userID,activityID,startDateTime,duration,placeID], function(err,res){
@@ -151,9 +157,9 @@ module.exports = exports = {
     });
   },
   //could add comments or rating here....
-  updateUserCurrentEndtime : function(userActivityID, endTime){
-    var sql = 'Update user_activities Set endTime=?, status=? where id=?'
-    connection.query(sql, [endTime, 'completed', userActivityID], function(err,res){
+  updateActivityToCompleted : function(userID, userActivityID, endTime, callback){
+    var sql = 'Update user_activities Set endTime=?, status=? where id=? and userID=?'
+    connection.query(sql, [endTime, 'completed', userActivityID, userID], function(err,res){
       if (err){
         callback(err);
       }
@@ -171,12 +177,12 @@ module.exports = exports = {
               INNER JOIN activities as a on a.id = ua.activityID \
               left join places as p on p.id = ua.placeID \
               where ua.userID = ? and ua.status = ?';
-    connection.query(sql, [userID, 'completed'], function(err, res){
+    connection.query(sql, [userID, 'completed'], function(err, rows){
       if (err){
         callback(err);
       }
       else{
-        callback(null, res);
+        callback(null, rows);
       }
     });
   }
