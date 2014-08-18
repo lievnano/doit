@@ -17,8 +17,7 @@ module.exports = exports = {
   cors: function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Header', 'Content-type, Authorization');
-
+    res.header('Access-Control-Allow-Headers', 'x-requested-with,Content-Type, Authorization');
     if (req.method === 'Options') {
       res.send(200);
     } else {
