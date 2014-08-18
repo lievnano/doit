@@ -3,14 +3,22 @@ module.exports = exports = {
     addActivity : function(activityName, description, uniquePlace, 
                          placeCategoryID, placeID, imgLink, status, 
                          participantsNeeded, occursOnce, startDateTime, 
-                         endDateTime, openingTime, closingTime, minDuration, maxDuration){
+                         endDateTime, openingTime, closingTime, minDuration, maxDuration, callback){
     var sql = 'Insert into activities (activityName, description, \
               uniquePlace, placeCategoryID, placeID, imgLink, status, \
               participantsNeeded, startDateTime, endDateTime, openingTime, \
               closingTime  timeOfDay, minDuration, maxDuration) \
               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    connection.query(sql, arguments, function(err,res){
-      return res.insertId;
+    connection.query(sql, [activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, 
+                           participantsNeeded, occursOnce, startDateTime,  endDateTime, openingTime,
+                           closingTime, minDuration, maxDuration],
+    function(err,res){
+      if (err){
+        callback(err)
+      }
+      else{
+        callback(null, res.insertId);
+      }
     });
   },
   addPlace : function(locationID, placeName, address, description, imgLink){
@@ -23,19 +31,34 @@ module.exports = exports = {
   getPlaces : function(callback){
     var sql = 'Select placeID, placeName from places';
     connection.query(sql, function(err,res){
-      callback(res);
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }
     });
   },
   getActivities : function(callback){
     var sql = 'Select activityID, activityName, description, imgLink from activities';
     connection.query(sql, function(err,res){
-      callback(res);
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }
     });
   },
   getTypes : function(callback){
     var sql = 'Select id, type from activity_types';
     connection.query(sql, function(err,res){
-      callback(res);
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }
     });    
   },
   addActivityTypes : function(type){
@@ -56,8 +79,8 @@ module.exports = exports = {
   },
   //need to set up location for laters....
   getUserActivities : function(userID, locationID, whenStart, duration, typeID, dateTimeToDo, timeToDo, callback){
-    var sql = 'Select a.id, a.activityName, a.description as activityDescription, a.imgLink, \
-              p.placeName, p.address, p.description, p.imgLink \
+    var sql = 'Select a.id, a.activityName, a.description as activityDescription, a.imgLink as activityImage, \
+              p.placeName, p.address, p.description as placeDescription, p.imgLink as placeImage \
               From \
               activities as a \
               left Join places as p \
@@ -82,12 +105,48 @@ module.exports = exports = {
   },
 
   setUserCurrent : function(userID, activityID, startDateTime,duration, placeID){
-    var sql = 'Insert into activities_inprogress (userID, activityID, startDateTime, duration, placeID) \
-              Values (?,?,?,?,?)';
-    connection.query(sql, [userID,activityID,startDateTime,duration,placeID], function(err,res){
+    var sql = 'Insert into user_activities (status, userID, activityID, startDateTime, duration, placeID) \
+              Values (?, ?,?,?,?,?)';
+    connection.query(sql, ['inprogress', userID,activityID,startDateTime,duration,placeID], function(err,res){
       return res.insertId;
     });
   },
+
+  getUserCurrent : function(userID, callback){
+    var sql = 'Select ua.id as userActivityID, ua.startDateTime, ua.duration, a.id as activityID, a.activityName, a.description as activityDescription, a.imgLink as activityImage, \
+              p.placeName, p.address, p.description as placeDescription, p.imgLink as placeImage \
+              From \
+              user_activities as ua \
+              inner join activities as a on a.id = ua.activityID \
+              left join places as p on p.id = ua.placeID \
+              where ua.userID = ? and ua.status = ?';
+    connection.query(sql, [userID, 'inprogress'], function(err, res){
+      callback(res);
+    });
+  },
+  //could add comments or rating here....
+  updateUserCurrentEndtime : function(userActivityID, endTime){
+    var sql = 'Update user_activities Set endTime=?, status=? where id=?'
+    connection.query(sql, [endTime, 'completed', userActivityID]);
+  },
+
+  getUserPrevious : function(userID, callback){
+    var sql = 'Select ua.id as userActivityID, ua.startDateTime, ua.duration, ua.endTime a.id as activityID, a.activityName, a.description as activityDescription, a.imgLink as activityImage, \
+              p.placeName, p.address, p.description as placeDescription, p.imgLink as placeImage \
+              FROM \
+              user_activities as ua \
+              INNER JOIN activities as a on a.id = ua.activityID \
+              left join places as p on p.id = ua.placeID \
+              where ua.userID = ? and ua.status = ?';
+    connection.query(sql, [userID, 'completed'], function(err, res){
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }
+    });
+  }
 
 
 
