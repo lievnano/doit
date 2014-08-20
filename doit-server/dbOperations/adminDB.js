@@ -109,7 +109,8 @@ module.exports = exports = {
   },
   //need to set up location for laters....
   getUserActivities : function(userID, locationID, whenStart, duration, typeID, dateTimeToDo, timeToDo, callback){
-    var sql = 'Select a.id, a.activityName, a.description as activityDescription, a.imgLink as activityImage, \
+    var sql = 'Select a.id as activityID, a.activityName, a.description as activityDescription, a.imgLink as activityImage, \
+               a.startDateTime, a.endDateTime, a.openingTime, a.closingTime, \
               p.placeName, p.address, p.description as placeDescription, p.imgLink as placeImage \
               From \
               activities as a \
@@ -124,7 +125,7 @@ module.exports = exports = {
               and (a.closingTime is NULL or a.closingTime >= Cast(? as Time)) \
               group by id \
               limit 10';
-    connection.query(sql, [typeID, duration, duration, dateTimeToDo, dateTimeToDo, timeToDo, timeToDo], function(err,res){
+    connection.query(sql, [typeID, duration, duration, dateTimeToDo, dateTimeToDo, dateTimeToDo, dateTimeToDo], function(err,res){
       if (err){
         callback(err);
       }
