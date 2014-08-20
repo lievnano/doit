@@ -1,18 +1,12 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var middle = require('./middleware');
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    database : 'doit'
-});
 
 module.exports = exports = function(app, express){
 
   app.use(morgan('dev'));
   app.use(middle.cors);
-     app.use(bodyParser.json());
+  app.use(bodyParser.json());
 
   var userDoItRouter = express.Router();
   var addEventRouter = express.Router();
