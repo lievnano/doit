@@ -1,7 +1,6 @@
 angular.module('doit.controllers', [])
 
-
-.controller('DashCtrl', function($scope, $state, DashOptions, ToDoLoader) {
+.controller('DashCtrl', function($scope, $state, DashOptions, ToDoLoader, serverRequest) {
 
   $scope.timeOptions = DashOptions.timeOptions();
   $scope.durationOptions = DashOptions.durationOptions();
@@ -13,9 +12,7 @@ angular.module('doit.controllers', [])
   $scope.sendToDo = function(){
     // ToDoLoader.loadToDoSpec($scope.toDo);
     $state.go('served-events');
-    // ToDoLoader.getToDos();
-      //send the object to appropriate factory and switch the page....
-    $scope.served();
+    // serverRequest.get('/hey');
   };
 
   $scope.served = function(){
@@ -33,17 +30,10 @@ angular.module('doit.controllers', [])
   };
 })
 
-.controller('FriendsCtrl', function($scope, Friends, ToDoLoader) {
-
-})
-
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  
-})
 
 .controller('LoginCtrl', function($scope, $state, OpenFB){
   $scope.login = function(){
-    OpenFB.login();
+    oauth.login();
     $state.go('tab.profile');
   };
 
@@ -61,7 +51,6 @@ angular.module('doit.controllers', [])
   $scope.myEvents = RecentEvents.events;
 
   $scope.events = function(){
-    // console.log('hey');
     $state.go('tab.events');
   };
   
@@ -71,7 +60,7 @@ angular.module('doit.controllers', [])
   $scope.toDo = ToDoLoader.events;
   $scope.recentEvents = RecentEvents.events;
   var count = Count.count;
-  $scope.event;
+  // $scope.event;
   
   $scope.goToDash = function(){
     $state.go('tab.dash');

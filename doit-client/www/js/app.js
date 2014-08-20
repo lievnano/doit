@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.contrib.ui.cards', 'ionic.rating', 'openfb'])
+angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.contrib.ui.cards', 'ionic.rating', 'angular-velocity', 'ngAnimate'])
 
 .run(function($ionicPlatform, ToDoLoader, $rootScope) {
   $ionicPlatform.ready(function() {
@@ -30,7 +30,7 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.con
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
+    // seen other people put each route config into thecontroller files.
     // setup an abstract state for the tabs directive
     .state('tab', {
       url: "/tab",
@@ -46,16 +46,6 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.con
         'tab-dash': {
           templateUrl: 'templates/tab-dash.html',
           controller: 'DashCtrl'
-        }
-      }
-    })
-
-    .state('tab.events', {
-      url: '/events',
-      views: {
-        'tab-events': {
-          templateUrl: 'templates/tab-events.html',
-          controller: 'EventsCtrl'
         }
       }
     })
@@ -91,5 +81,5 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.con
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
-});
+})
 

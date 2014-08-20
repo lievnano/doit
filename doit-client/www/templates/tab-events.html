@@ -4,8 +4,10 @@
   </ion-nav-buttons>
   <ion-content class="has-head">
     <div class="list">
-      <a class="item item-avatar" href="#" ng-repeat='todos in toDo'>  
-      <img src={{todos.img}} ng-style="{'height': '100%'}">
+      <a class="item item-avatar velocity-transition-bounceRightIn" data-velocity-opts="{stagger: 350}"
+      href="#" 
+      ng-repeat='todos in toDo'>  
+      <!-- <img src={{todos.img}} ng-style="{'height': '100%'}"> -->
       <h2>{{todos.title}}</h2>
       <p>{{todos.description}}</p>
       </a>
