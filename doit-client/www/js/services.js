@@ -110,7 +110,7 @@ angular.module('doit.services', ['ionic'])
     return times;
   };
   options.durationOptions = function(){
-    var durations = ['5 minutes', '15 minutes', '30 minutes', '1 hour', '1 - 3 hours', 'all day', 'multiple days'];
+    var durations = ['5 minutes', '15 minutes', '30 minutes', '1 hour', '1 - 3 hours', 'all day'];
     return durations;
   };
   options.typeOptions = function(){
@@ -176,11 +176,16 @@ angular.module('doit.services', ['ionic'])
     return recentEvents;
 })
 
-.factory('serverRequest', function($http){
+.factory('serverRequest', function($http, $state){
   var requestObject = {};
 
-  requestObject.get = function(route){
-    return $http.get('do-it-server.cloudapp.net/' + route)
+  requestObject.get = function(route, params){
+    return $http({
+            method: 'GET',
+            url: 'http://do-it-server.cloudapp.net/',
+            params: params
+
+            })
           .success(function(data, status, headers, config){
             console.log(data);
            })
@@ -190,10 +195,7 @@ angular.module('doit.services', ['ionic'])
   };
 
   requestObject.post = function(route, data){
-    return $http.post('do-it-server.cloudapp.net/' + route, data)
-            .success(function(){
-              console.log('data has been posted');
-            });
+    return $http.post('http://do-it-server.cloudapp.net/' + route, data)
   };
 
   return requestObject;
