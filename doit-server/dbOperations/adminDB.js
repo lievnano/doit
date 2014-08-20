@@ -20,7 +20,7 @@ module.exports = exports = {
                          maxDuration, typeID, callback){
       var sql = 'Insert into activities (activityName, description, \
                 uniquePlace, placeCategoryID, placeID, imgLink, status, \
-                participantsNeeded, occursOnce startDateTime, endDateTime, openingTime, \
+                participantsNeeded, occursOnce, startDateTime, endDateTime, openingTime, \
                 closingTime, minDuration, maxDuration) \
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
       connection.query(sql, [activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, 
