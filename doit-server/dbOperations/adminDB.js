@@ -18,22 +18,22 @@ module.exports = exports = {
                          participantsNeeded, occursOnce, startDateTime, 
                          endDateTime, openingTime, closingTime, minDuration, 
                          maxDuration, typeID, callback){
-    var sql = 'Insert into activities (activityName, description, \
-              uniquePlace, placeCategoryID, placeID, imgLink, status, \
-              participantsNeeded, startDateTime, endDateTime, openingTime, \
-              closingTime  timeOfDay, minDuration, maxDuration) \
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
-    connection.query(sql, [activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, 
-                           participantsNeeded, occursOnce, startDateTime,  endDateTime, openingTime,
-                           closingTime, minDuration, maxDuration],
-    function(err,rows){
-      if (err){
-        callback(err)
-      }
-      else{
-        exports.addTypeToActivities(rows.insertID, typeID, callback);
-      }
-    });
+      var sql = 'Insert into activities (activityName, description, \
+                uniquePlace, placeCategoryID, placeID, imgLink, status, \
+                participantsNeeded, startDateTime, endDateTime, openingTime, \
+                closingTime  timeOfDay, minDuration, maxDuration) \
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
+      connection.query(sql, [activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, 
+                             participantsNeeded, occursOnce, startDateTime,  endDateTime, openingTime,
+                             closingTime, minDuration, maxDuration],
+      function(err,rows){
+        if (err){
+          callback(err)
+        }
+        else{
+          exports.addTypeToActivities(rows.insertID, typeID, callback);
+        }
+      });
   },
   addPlace : function(locationID, placeName, address, description, imgLink, callback){
     var sql = 'Insert into places (locationID, placeName, address, description, imgLink) \
@@ -48,7 +48,7 @@ module.exports = exports = {
     });
   },
   getPlaces : function(callback){
-    var sql = 'Select placeID, placeName from places';
+    var sql = 'Select id as placeID, placeName from places';
     connection.query(sql, function(err,res){
       if (err){
         callback(err);
