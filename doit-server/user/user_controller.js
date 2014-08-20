@@ -11,10 +11,10 @@ module.exports = exports = {
     //send request to adminDB function and then send the resposne back to client
     dbOps.getUserCurrent(req.body.userID, function(err,rows){
       if (err){
-        res.send(500,err);
+        res.status(500).send(err);
       }
       else{
-        res.send(200,rows);
+        res.status(200).send(rows);
       }
     });
 
@@ -27,10 +27,10 @@ module.exports = exports = {
     //and then send the resposne back to client
     dbOps.getUserPrevious(req.body.userID, function(err,rows){
       if (err){
-        res.send(500,err);
+        res.status(500).send(err);
       }
       else{
-        res.send(200,rows);
+        res.status(200).send(rows);
       }
     });
   },
@@ -40,10 +40,10 @@ module.exports = exports = {
     //send request to adminDB function and then confirm to client that activity has been added...
     dbOps.setUserCurrent(req.body.userID, req.body.activityID, req.body.startDateTime,req.body.duration, req.body.placeID), function(err,rows){
       if (err){
-        res.send(500,err);
+        res.status(500).send(err);
       }
       else{
-        res.send(200,rows);
+        res.status(200).send(rows);
       }
     }
   },
@@ -52,12 +52,12 @@ module.exports = exports = {
 
 
     //send request to adminDB function and then send response back to client
-    dbOps.getUserActivities(req.body.userID, req.body.locationID, req.body.whenStart, req.body.duration, req.body.typeID, req.body.dateTimeToDo, req.body.timeToDo, function(err, rows){
+    dbOps.getUserActivities(req.body.userID, req.body.locationID, req.body.whenStart, req.body.duration, req.body.typeID, req.body.dateTimeToDo, req.body.timeToDo, function(err,rows){
       if (err){
-        res.send(500, err);
+        res.status(500).send(err);
       }
-      else {
-        res.send(200, rows);
+      else{
+        res.status(200).send(rows);
       }
 
     });
@@ -71,12 +71,12 @@ module.exports = exports = {
     //TODO ** do check on request to make sure its good
 
     //send request to adminDB function and then send response back to client
-    dbOps.updateActivityToCompleted(req.body.userID, req.body.userActivityID, req.body.endTime, function(err, rows){
+    dbOps.updateActivityToCompleted(req.body.userID, req.body.userActivityID, req.body.endTime, function(err,rows){
       if (err){
-        res.send(500,err)
+        res.status(500).send(err);
       }
       else{
-        res.send(200,rows);
+        res.status(200).send(rows);
       }
     });
   }
