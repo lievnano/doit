@@ -1,5 +1,5 @@
-<ion-view title="Profile">
-  <ion-content class="has-header padding">
+<ion-view title="Profile" hide-nav-bar="true">
+  <ion-content ng-style="{'background':'#643551', 'padding': '15px'}">
     <div id="container">
       <div id="profileSandbox">
         <img ng-src="http://hrhq.squarespace.com/assets/images/heroes/dougcalhoun.jpg" class="avatar">
@@ -13,29 +13,28 @@
         </span>
       </div>
 
- <!--      <button class="button button-positive interestsButton" ng-click="events()"></button> -->
-
       <div class="friendSandbox">
-        <h4>Recent Activities<h4>
+        <h4 ng-style="{'font-family': 'Copperplate', 'color': 'white'}">My Activities<h4>
       </div>
-      <ion-scroll direction="y" style="width: 500px; height: 500px">
-        <ul class="list">
-          <li ng-repeat="todos in myEvents" ui-sref="activities({id: $index})">
-            <a class="item item-avatar">
-            <img src="{{todos.img}}">
-            <span>
+      <ion-scroll direction="y" >
+        <div class="list">
+            <a class="item item" ng-class="{even: $even, odd: $odd}"
+            ng-repeat="todos in myEvents" ui-sref="activities({id: $index})" ng-style="{'padding': '0'}">
+            <span ng-style="{'float': 'left'}">
+            <img src="{{todos.img}}" ng-style="{'height': '70px', 'width': '70px', 'display': 'inline'}">
+            </span>
+            <span ng-style="{'float': 'right', 'padding': '5px'}">
               <p>{{todos.title}}</p>
               <i class="icon ion-star"></i>
               <i class="icon ion-star"></i>
               <i class="icon ion-star"></i>
               <i class="ion-ios7-star-outline"></i>
               <i class="ion-ios7-star-outline"></i>
-           <!--    <rating ng-model="rate" max="max"></rating> -->
+              <!-- <rating ng-model="rate" max="max"></rating> -->
             </span>
-            </a>
-          </li>  
-        </ul>
+            </a> 
+        </div>
       </ion-scroll>
-    </div>
+
   </ion-content>
 </ion-view>

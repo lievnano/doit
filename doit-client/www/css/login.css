@@ -1,6 +1,10 @@
+@font-face {
+  font-family: 'Axis';
+  src: url('./fonts/axis.otf')
+}
+
 .loginButtonContainer{
-  background: url(http://www.grandlimoinc.com/images/tours/sfnight.jpg);
-  background-size: contain;
+  background-color: #261226;
   top: 0;
   left: 0;
   right: 0;
@@ -11,15 +15,27 @@
 }
 
 .loginFacebook {
-  margin-top: 340px;
-  background-color: #3b5998;
+  /*margin-top: 340px;*/
+  background-color: #261226;  
   color: white;
   position: relative;
+  border: 2px solid;
+  /*font-weight: 400;*/
+  font-family: Axis;
+  font-size: 20px;
+  font-variant: small-caps;
+  margin-top: 15px;
 }
 
 .doItLogo {
   color: white;
-  margin-top: 200px;
+  vertical-align: middle;
   font-size: 42px;
   position: relative;
+  font-family: Axis;
+  /*margin-top: 200px;*/
+}
+
+.holder {
+  margin-top: 200px;
 }
