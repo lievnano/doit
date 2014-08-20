@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
 
 });
 // uncomment the following when password is correctly set...
-// connection.connect();
+ // connection.connect();
 
 module.exports = exports = {
 
@@ -31,7 +31,8 @@ module.exports = exports = {
           callback(err)
         }
         else{
-          exports.addTypeToActivities(rows.insertID, typeID, callback);
+          console.log('fooo', rows.insertID, typeID);
+          setTimeout(function(){exports.addTypeToActivities(rows.insertID, typeID, callback)},200);
         }
       });
   },
