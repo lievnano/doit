@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     database : 'doit',
-    password : doit_pass
+    password : doit_pass,
 
 });
 // uncomment the following when password is correctly set...
@@ -16,21 +16,22 @@ module.exports = exports = {
     addActivity : function(activityName, description, uniquePlace, 
                          placeCategoryID, placeID, imgLink, status, 
                          participantsNeeded, occursOnce, startDateTime, 
-                         endDateTime, openingTime, closingTime, minDuration, maxDuration, callback){
+                         endDateTime, openingTime, closingTime, minDuration, 
+                         maxDuration, typeID, callback){
     var sql = 'Insert into activities (activityName, description, \
               uniquePlace, placeCategoryID, placeID, imgLink, status, \
               participantsNeeded, startDateTime, endDateTime, openingTime, \
               closingTime  timeOfDay, minDuration, maxDuration) \
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
     connection.query(sql, [activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, 
                            participantsNeeded, occursOnce, startDateTime,  endDateTime, openingTime,
                            closingTime, minDuration, maxDuration],
-    function(err,res){
+    function(err,rows){
       if (err){
         callback(err)
       }
       else{
-        callback(null, res);
+        exports.addTypeToActivities(rows.insertID, typeID, callback);
       }
     });
   },
@@ -82,7 +83,12 @@ module.exports = exports = {
   addActivityTypes : function(type, callback){
     var sql = 'Insert into activity_types (type) Values (?)';
     connection.query(sql, [type], function(err,res){
-      return res.insertId;
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, res);
+      }
     });
   },
   addTypeToActivities : function(activityID, typeID, callback){
