@@ -3,5 +3,9 @@
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.0.0-beta.10"
+  },
+  "dependencies": {
+    "angular-velocity": "~0.1.1",
+    "velocity": "~0.11.2"
   }
 }

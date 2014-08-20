@@ -13,8 +13,6 @@ module.exports = exports = function(app, express){
   var profileRouter = express.Router();
   var curatorRouter = express.Router();
   var userRouter = express.Router();
-
-  var authRouter = express.Router();
   var isCurator = function(req,res,next){
     next();
   };
@@ -23,11 +21,9 @@ module.exports = exports = function(app, express){
 
   
   app.use('/curator', curatorRouter);
-  app.use('/auth', authRouter);
   app.use('/user', userRouter);
 
 
-  require('../auth/auth_routes.js')(authRouter);
   require('../curator/curator_routes.js')(curatorRouter);
   require('../user/user_routes.js')(userRouter);
 

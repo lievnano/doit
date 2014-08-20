@@ -6,7 +6,7 @@
 
   <ion-content ng-style="{'background': '#be605b'}">
 
-      <swipe-cards>
+  <!--     <swipe-cards>
       <swipe-card ng-repeat="todos in toDo" ng-style="{'z-index': potentialMatches.length - 1 - $index, 'top': '0px', 'left': '0px', 'position': 'absolute'}" ng-click="openModal($index)">
         <div class='item item-image swipe-card' ng-style="{'border':'2px solid black'}">
           <div class="image">
@@ -14,11 +14,23 @@
           <h2 class="todosTitle"><span>{{todos.title}}</span></h2>
         </div> 
       </swipe-card>
-<!--       <div class='likeOrDislike'>
+      <div class='likeOrDislike'>
         <h2>Wassup</h2>
-      </div> -->
-      </swipe-cards>
+      </div>
+   -->   
+   <!--  </swipe-cards>
      <!-- </div ng-repeat-end> -->
+
+     <div class="list">
+      <div class="velocity-transition-slideUpIn" data-velocity-opts="{stagger: 100}"
+        href="#" ng-repeat='todos in toDo' ng-click="openModal($index)">
+        <a class="item item-avatar">  
+        <img src={{todos.img}} ng-style="{'height': '100%'}">
+        <h2>{{todos.title}}</h2>
+        <span><p ng-style="{'color': 'grey'}">{{todos.where}}</p></span><span ng-style="{'float':'right', 'color': 'grey'}"><p>hey</p></span>
+        </a>
+      </div>
+    </div>
 
   </ion-content>
 </ion-view> 
