@@ -28,11 +28,11 @@ module.exports = exports = {
                              closingTime, minDuration, maxDuration],
       function(err,rows){
         if (err){
-          callback(err)
+          callback(err);
         }
         else{
-          console.log('fooo', rows.insertID, typeID);
-          setTimeout(function(){exports.addTypeToActivities(rows.insertID, typeID, callback)},200);
+          console.log('fooo', rows.insertId, typeID);
+          setTimeout(function(){exports.addTypeToActivities(rows.insertId, typeID, callback)},200);
         }
       });
   },
