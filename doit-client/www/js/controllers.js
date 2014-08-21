@@ -1,6 +1,6 @@
 angular.module('doit.controllers', [])
 
-.controller('DashCtrl', function($scope, $state, DashOptions, ToDoLoader, serverRequest) {
+.controller('DashCtrl', function($scope, $state, DashOptions, ToDoLoader, serverRequest, $rootScope) {
 
   $scope.timeOptions = DashOptions.timeOptions();
   $scope.durationOptions = DashOptions.durationOptions();
@@ -79,12 +79,15 @@ angular.module('doit.controllers', [])
       typeID: type,
       duration: durationConverter($scope.toDo['duration'])
     }).success(function(data, status){
-      console.log('data');
-    });
+      // console.log('data');
+      $rootScope.events = data;
+      console.log($rootScope.events);
+      // $state.go('served-events');
+
+    })
   };
 
   $scope.served = function(){
-      $state.go('served-events');
   };
 
     //send the object to appropriate factory and switch the page...
@@ -99,7 +102,7 @@ angular.module('doit.controllers', [])
 })
 
 
-.controller('LoginCtrl', function($scope, $state, OpenFB){
+.controller('LoginCtrl', function($scope, $state){
   $scope.login = function(){
     oauth.login();
     $state.go('tab.profile');
@@ -107,7 +110,7 @@ angular.module('doit.controllers', [])
 
 })
 
-.controller('ProfileCtrl', function($scope, $state, ToDoLoader, RecentEvents) {
+.controller('ProfileCtrl', function($scope, $state, ToDoLoader, RecentEvents, $rootScope) {
   $scope.rate = 0;
   $scope.max = 5;
   $scope.user = {
@@ -116,7 +119,8 @@ angular.module('doit.controllers', [])
     personality: 'Chill',
   };
 
-  $scope.myEvents = RecentEvents.events;
+  $scope.recentEvents = $rootScope.pastEvents
+  
 
   $scope.events = function(){
     $state.go('tab.events');
@@ -124,9 +128,10 @@ angular.module('doit.controllers', [])
   
 })
 
-.controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal, Count, RecentEvents){
+.controller('ServedCtrl', function($scope, $state, ToDoLoader, $ionicModal, Count, RecentEvents, $rootScope, serverRequest){
   $scope.toDo = ToDoLoader.events;
   $scope.recentEvents = RecentEvents.events;
+  $scope.rootScope.events;
   var count = Count.count;
   // $scope.event;
   
@@ -143,11 +148,21 @@ angular.module('doit.controllers', [])
     $scope.modal = modal;
     
     $scope.createEvent = function(){
-      $scope.recentEvents.unshift($scope.toDo[3]);
-      console.log($scope.recentEvents.length);
+      serverRequest.post('user/addActivity', {
+      userID: 1,
+      tokenID: 2,
+      activityID: 3,
+      startDateTime: new Date(),
+      duration: 4,
+      placeID: null,
+      })
+      .success(function(data, status){
+        console.log('activity has been added');
+        $state.go('tab.profile');
+      });
+
 
       $scope.modal.hide();
-      $state.go('tab.profile');
     };
 
 
@@ -163,10 +178,12 @@ angular.module('doit.controllers', [])
 
 .controller('ActivitiesCtrl', function($scope, $stateParams, $state, ToDoLoader, RecentEvents){
   $scope.max = 5;
-  $stateParams.activityId;
    $scope.profile = function(){
     $state.go('tab.profile');
   };
   $scope.activity = RecentEvents.events[$stateParams.id];
-});
+})
 
+.controller('MapsCtrl', function(){
+
+})

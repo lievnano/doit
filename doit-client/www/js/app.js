@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.contrib.ui.cards', 'ionic.rating', 'angular-velocity', 'ngAnimate'])
+angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.contrib.ui.cards', 'ionic.rating', 'angular-velocity', 'ngAnimate', 'google-maps'])
 
-.run(function($ionicPlatform, ToDoLoader, $rootScope) {
+.run(function($ionicPlatform, ToDoLoader, $rootScope, serverRequest, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,19 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.con
       StatusBar.styleDefault();
     }
   });
+
+  $rootScope.pastEvents;
+
+  serverRequest.post('user/getPreviousActivities', {
+      userID: 1,
+      tokenID: 2,
+      })
+      .success(function(data, status){
+        console.log(data);
+        $rootScope.pastEvents = data;
+        $state.go('tab.profile');
+      });
+
 
   // $rootScope.events = ToDoLoader.events;
 })
@@ -73,13 +86,19 @@ angular.module('doit', ['ionic', 'doit.controllers', 'doit.services', 'ionic.con
     })
 
     .state('activities', {
-      url: '/:id',
+      url: '/activity/:id',
       templateUrl: 'templates/activities.html',
       controller: 'ActivitiesCtrl'
+    })
+
+    .state('activitiesMap', {
+      url: '/map',
+      templateUrl: 'templates/mapLoader.html',
+      controller: 'MapsCtrl'
     })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
-})
+});
 
