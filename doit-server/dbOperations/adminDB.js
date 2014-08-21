@@ -6,35 +6,34 @@ var connection = mysql.createConnection({
     user     : 'root',
     database : 'doit',
     password : doit_pass,
-
 });
 // uncomment the following when password is correctly set...
  // connection.connect();
 
 module.exports = exports = {
 
-    addActivity : function(activityName, description, uniquePlace, 
-                         placeCategoryID, placeID, imgLink, status, 
-                         participantsNeeded, occursOnce, startDateTime, 
-                         endDateTime, openingTime, closingTime, minDuration, 
-                         maxDuration, typeID, callback){
-      var sql = 'Insert into activities (activityName, description, \
-                uniquePlace, placeCategoryID, placeID, imgLink, status, \
-                participantsNeeded, occursOnce, startDateTime, endDateTime, openingTime, \
-                closingTime, minDuration, maxDuration) \
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
-      connection.query(sql, [activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, 
-                             participantsNeeded, occursOnce, startDateTime,  endDateTime, openingTime,
-                             closingTime, minDuration, maxDuration],
-      function(err,rows){
-        if (err){
-          callback(err);
-        }
-        else{
-          console.log('fooo', rows.insertId, typeID);
-          setTimeout(function(){exports.addTypeToActivities(rows.insertId, typeID, callback)},200);
-        }
-      });
+  addActivity : function(activityName, description, uniquePlace, 
+                       placeCategoryID, placeID, imgLink, status, 
+                       participantsNeeded, occursOnce, startDateTime, 
+                       endDateTime, openingTime, closingTime, minDuration, 
+                       maxDuration, typeID, callback){
+    var sql = 'Insert into activities (activityName, description, \
+              uniquePlace, placeCategoryID, placeID, imgLink, status, \
+              participantsNeeded, occursOnce, startDateTime, endDateTime, openingTime, \
+              closingTime, minDuration, maxDuration) \
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
+    connection.query(sql, [activityName, description, uniquePlace, placeCategoryID, placeID, imgLink, status, 
+                           participantsNeeded, occursOnce, startDateTime,  endDateTime, openingTime,
+                           closingTime, minDuration, maxDuration],
+    function(err,rows){
+      if (err){
+        callback(err);
+      }
+      else{
+        console.log('fooo', rows.insertId, typeID);
+        setTimeout(function(){exports.addTypeToActivities(rows.insertId, typeID, callback)},200);
+      }
+    });
   },
   addPlace : function(locationID, placeName, address, description, imgLink, callback){
     var sql = 'Insert into places (locationID, placeName, address, description, imgLink) \
@@ -123,7 +122,7 @@ module.exports = exports = {
               and (a.endDateTime is NULL or a.endDateTime <= Cast(? as dateTime)) \
               and (a.openingTime is NULL or a.openingTime <= Cast(? as Time)) \
               and (a.closingTime is NULL or a.closingTime >= Cast(? as Time)) \
-              group by id \
+              group by a.id \
               limit 10';
     connection.query(sql, [typeID, duration, duration, dateTimeToDo, dateTimeToDo, dateTimeToDo, dateTimeToDo], function(err,res){
       if (err){
@@ -177,7 +176,17 @@ module.exports = exports = {
       }      
     });
   },
-
+  getPlaceCategories : function(callback){
+    var sql = 'Select id as placeCategoryID, placeCategory, description from place_categories';
+    connection.query(sql, function(err,rows){
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null, rows);
+      }
+    });
+  },
   getUserPrevious : function(userID, callback){
     var sql = 'Select ua.id as userActivityID, ua.startDateTime, ua.duration, ua.endTime a.id as activityID, a.activityName, a.description as activityDescription, a.imgLink as activityImage, \
               p.placeName, p.address, p.description as placeDescription, p.imgLink as placeImage \
