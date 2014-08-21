@@ -188,7 +188,7 @@ module.exports = exports = {
     });
   },
   getUserPrevious : function(userID, callback){
-    var sql = 'Select ua.id as userActivityID, ua.startDateTime, ua.duration, ua.endTime a.id as activityID, a.activityName, a.description as activityDescription, a.imgLink as activityImage, \
+    var sql = 'Select ua.id as userActivityID, ua.startDateTime, ua.duration, ua.endDateTime, a.id as activityID, a.activityName, a.description as activityDescription, a.imgLink as activityImage, \
               p.placeName, p.address, p.description as placeDescription, p.imgLink as placeImage \
               FROM \
               user_activities as ua \
