@@ -40,7 +40,7 @@ module.exports = exports = {
     //do check on request to make sure its good
 
     dbOps.addRatingToActivity(req.body.userID, req.body.userActivityID, req.body.rating, standardCallback);
-  }
+  },
   addActivity : function(req,res){
     //TODO ** do check on request to make sure its good
 
