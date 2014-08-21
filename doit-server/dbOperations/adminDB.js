@@ -12,6 +12,17 @@ var connection = mysql.createConnection({
 
 module.exports = exports = {
 
+  getAllActivities : function(callback){
+    var sql = 'Select * from activities';
+    connection.query(sql, function(err,rows){
+      if (err){
+        callback(err);
+      }
+      else{
+        callback(null,rows);
+      }
+    });
+  },
   addActivity : function(activityName, description, uniquePlace, 
                        placeCategoryID, placeID, imgLink, status, 
                        participantsNeeded, occursOnce, startDateTime, 
