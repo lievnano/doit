@@ -13,7 +13,8 @@ module.exports = exports = {
     // }
   },
   getEventsFromActivityID : function(req,res){
-    dbOps.getEventsFromActivityID(function(err,rows){
+    dbOps.getEventsFromActivityID(req.body.locationID, req.body.activityID, req.body.dateTimeToDo,
+                                  function(err,rows){
       if(err){
         console.log(err);
         res.status(500).send(err);
