@@ -26,7 +26,7 @@ module.exports = exports = {
                             res.status(200).send(rows);
                           } 
                   })
-  }
+  },
   addPlace : function(req, res){
     //check variables are good...
     dbOps.addPlace(req.body.locationID, req.body.placeName, req.body.address, req.body.description, req.body.imgLink, 
