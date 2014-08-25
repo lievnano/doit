@@ -10,7 +10,8 @@
     "morgan": "^1.2.2",
     "mysql": "^2.4.2",
     "passport": "^0.2.0",
-    "passport-facebook": "^1.0.3"
+    "passport-facebook": "^1.0.3",
+    "validator": "^3.17.0"
   },
   "devDependencies": {
     "gulp": "^3.8.7",
