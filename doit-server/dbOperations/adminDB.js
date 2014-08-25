@@ -193,7 +193,7 @@ module.exports = exports = {
                       });
   },
   //need to set up location for laters....
-  getUserActivities : function(userID, locationID, whenStart, duration, typeID, dateTimeToDo, timeToDo, callback){
+  getUserActivities : function(userID, locationID, duration, typeID, dateTimeToDo, callback){
     var sql = 'SELECT a.id AS activityID, a.activityName, a.description AS activityDescription, a.imgLink AS activityImage, \
                a.startDateTime, a.endDateTime, a.openingTime, a.closingTime, \
               p.placeName, p.address, p.description AS placeDescription, p.imgLink AS placeImage \
@@ -250,9 +250,21 @@ module.exports = exports = {
       }
     });
   },
+
+  addRatingToActivity : function(userID, userActivityID, rating){
+    var sql = 'UPDATE user_activities SET rating=? WHERE id=? AND userID=?';
+    connection.query(sql, [rating, userActivityID, userID]);
+    if (err){
+      callback(err);
+    }
+    else {
+      callback(null,err);
+    }
+  },
+
   //could add comments OR rating here....
   updateActivityToCompleted : function(userID, userActivityID, endTime, callback){
-    var sql = 'UPDATE user_activities SET endTime=?, status=? where id=? AND userID=?'
+    var sql = 'UPDATE user_activities SET endTime=?, status=? where id=? AND userID=?';
     connection.query(sql, [endTime, 'completed', userActivityID, userID], function(err,res){
       if (err){
         callback(err);
